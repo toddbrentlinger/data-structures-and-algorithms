@@ -32,6 +32,13 @@ export class SinglyLinkedList {
         return count;
     }
 
+    /** Returns number of nodes in SinglyLinkedList instance(recursively). */
+    sizeRecursive(node = this.head) {
+        if (node === null) return 0;
+
+        return 1 + this.sizeRecursive(node.next);
+    }
+
     /** Clears SinglyLinkedList instance. */
     clear() {
         this.head = null;
@@ -136,15 +143,126 @@ export class SinglyLinkedList {
         // If currNode is null, reached end of SinglyLinkedList without finding match
         if (currNode !== null) {
             prevNode.next = currNode.next;
+        } else {
+            console.error(`Key: {${key}} NOT in SinglyLinkedList instance.`);
         }
     }
 
     /**
-     * Deletes node in SinglyLinkedList instance.
-     * @param {Node} node
+     * Deletes node at zero-indexed position in SinglyLinkedList instance.
+     * @param {Number} position 
      */
-    deleteNodeAtPosition(node) {
+    deleteNodeAtPosition(position) {
+        // Check if SinglyLinkedList instance is empty
+        if (this.head === null) {
+            console.error("SinglyLinkedList instance is empty");
+            return;
+        }
+        
+        // Check if delete first node
+        if (position === 0) {
+            this.head = this.head.next;
+            return;
+        }
 
+        let tempNode = this.head;
+
+        // Find previous node of the node to be deleted
+        for (let i = 0; tempNode !== null && i < position - 1; i++) {
+            tempNode = tempNode.next;
+        }
+
+        // If position is more than total number of nodes
+        if (tempNode === null || tempNode.next === null) {
+            console.error(`Position {${position}} NOT in SinglyLinkedList instance.`);
+            return;
+        }
+
+        // Assign previous node 'next' property to node to be deleted's 'next' property
+        tempNode.next = tempNode.next.next;
+
+        /*
+        let currPosition = 1;
+        let currNode = this.head.next;
+        let prevNode = this.head;
+
+        while (currNode !== null && currPosition < position) {
+            prevNode = currNode;
+            currNode = currNode.next;
+            currPosition++;
+        }
+
+        if (currPosition === position) {
+            prevNode.next = currNode.next;
+        } else {
+            console.error(`Position {${position}} NOT in SinglyLinkedList instance.`);
+        }
+        */
+    }
+
+    /**
+     * Checks whether the a node with matching key is present in SinglyLinkedList instance
+     * @param {Object} key
+     */
+    search(key) {
+        let currNode = this.head;
+
+        while (currNode !== null) {
+            if (currNode.data === key) {
+                return true;
+            }
+            currNode = currNode.next;
+        }
+        return false;
+    }
+
+    /**
+     * Returns data of node at index 'n'.
+     * @param {Number} index
+     */
+    getNth(index) {
+        let currIndex = 0;
+        let currNode = this.head;
+
+        while (currNode !== null) {
+            if (currIndex === index) {
+                return currNode.data;
+            }
+            currIndex++;
+            currNode = currNode.next;
+        }
+        // SinglyLinkedList instance does NOT contain 'index'
+        console.error(`SinglyLinkedList instance does NOT contain index: ${index}`);
+    }
+
+    /**
+     * Returns data of node at index 'n'(recursively).
+     * @param {any} index
+     */
+    getNthRecursive(node = this.head, index) {
+        let count = 0;
+
+        if (count === index) {
+            return node.data;
+        } else {
+            return this.getNthRecursive(node.next, index - 1);
+        }
+
+    }
+
+    // TEMP?
+
+    /**
+     * Creates new SinglyLinkedList with n-number of nodes with values ranging from 0-(n-1)
+     * @param {Number} n
+     * @param {Boolean} isRandom
+     */
+    createNNodes(n, isRandom = false) {
+        this.head = null;
+
+        for (let i = 0; i < n; i++) {
+            this.append(i);
+        }
     }
 }
 
