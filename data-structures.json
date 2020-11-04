@@ -1,0 +1,13 @@
+﻿[
+  {
+    "data-structure": "Singly Linked List",
+    "global-variable": "singlyLinkedList",
+    "methods": [
+      {
+        "method": "size",
+        "name": "size()",
+        "description": "Returns number of nodes in SinglyLinkedList instance."
+      }
+    ]
+  }
+]

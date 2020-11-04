@@ -237,17 +237,41 @@ export class SinglyLinkedList {
 
     /**
      * Returns data of node at index 'n'(recursively).
-     * @param {any} index
+     * @param {Number} index
      */
     getNthRecursive(node = this.head, index) {
-        let count = 0;
-
-        if (count === index) {
+        if (index === 0) {
             return node.data;
         } else {
             return this.getNthRecursive(node.next, index - 1);
         }
 
+    }
+
+    /** Reverse order of nodes in SinglyLinkedList instance. */
+    reverse() {
+        let prevNode = null;
+        let currNode = this.head;
+        let nextNode = null;
+
+        while (currNode !== null) {
+            // Before changing current node 'next' property, assign it to next node
+            nextNode = currNode.next;
+
+            console.log(`prev: ${prevNode ? prevNode.data : null}
+                \ncurr: ${currNode ? currNode.data : null}
+                \nnext: ${nextNode ? nextNode.data : null}`);
+
+            // Set current node 'next' property to previous node
+            currNode.next = prevNode;
+
+            // Set node values for next loop
+            prevNode = currNode;
+            currNode = nextNode;
+        }
+
+        // Set new head to last node which is previous node after loop ends
+        this.head = prevNode;
     }
 
     // TEMP?
