@@ -201,7 +201,7 @@ export class SinglyLinkedList {
     }
 
     /**
-     * Checks whether the a node with matching key is present in SinglyLinkedList instance
+     * Checks whether the a node with matching key is present in SinglyLinkedList instance.
      * @param {Object} key
      */
     search(key) {
@@ -258,10 +258,6 @@ export class SinglyLinkedList {
             // Before changing current node 'next' property, assign it to next node
             nextNode = currNode.next;
 
-            console.log(`prev: ${prevNode ? prevNode.data : null}
-                \ncurr: ${currNode ? currNode.data : null}
-                \nnext: ${nextNode ? nextNode.data : null}`);
-
             // Set current node 'next' property to previous node
             currNode.next = prevNode;
 
@@ -272,6 +268,10 @@ export class SinglyLinkedList {
 
         // Set new head to last node which is previous node after loop ends
         this.head = prevNode;
+    }
+
+    reverseEveryNthNode(n) {
+
     }
 
     // TEMP?

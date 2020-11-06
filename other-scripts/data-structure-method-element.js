@@ -23,7 +23,7 @@ export function createDataStructureMethodElement(methodJSON, globalVar) {
     // Code
     
     childElement = document.createElement('code');
-    childElement.innerHTML = globalVar[methodJSON['method']];
+    childElement.innerHTML = globalVar[methodJSON.name.split("(")[0]];
     rootElement.appendChild(childElement);
     
     return rootElement;

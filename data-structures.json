@@ -4,10 +4,66 @@
     "global-variable": "singlyLinkedList",
     "methods": [
       {
-        "method": "size",
         "name": "size()",
         "description": "Returns number of nodes in SinglyLinkedList instance."
+      },
+      {
+        "name": "sizeRecursive(node = this.head)",
+        "description": "Returns number of nodes in SinglyLinkedList instance(recursively)."
+      },
+      {
+        "name": "clear()",
+        "description": "Clears SinglyLinkedList instance."
+      },
+      {
+        "name": "print()",
+        "description": "Prints each node in SinglyLinkedList instance to console."
+      },
+      {
+        "name": "getLast()",
+        "description": "Returns last node in SinglyLinkedList instance."
+      },
+      {
+        "name": "push(data)",
+        "description": "Creates new node with data parameter and adds to beginning to SinglyLinkedList."
+      },
+      {
+        "name": "append(data)",
+        "description": "Creates new node with data parameter and adds to end of SinglyLinkedList."
+      },
+      {
+        "name": "insertAfter(prevNode, data)",
+        "description": "Creates new node with data parameter and inserts after prevNode parameter."
+      },
+      {
+        "name": "deleteNodeWithMatchingKey(key)",
+        "description": "Given a 'key', delete the first occurrence of this key in the SinglyLinkedList."
+      },
+      {
+        "name": "deleteNodeAtPosition(position)",
+        "description": "Deletes node at zero-indexed position in SinglyLinkedList instance."
+      },
+      {
+        "name": "search(key)",
+        "description": "Checks whether the a node with matching key is present in SinglyLinkedList instance."
+      },
+      {
+        "name": "getNth(index)",
+        "description": "Returns data of node at index 'n'."
+      },
+      {
+        "name": "getNthRecursive(node = this.head, index)",
+        "description": "Returns data of node at index 'n'(recursively)."
+      },
+      {
+        "name": "reverse()",
+        "description": "Reverse order of nodes in SinglyLinkedList instance."
+      },
+      {
+        "name": "",
+        "description": ""
       }
     ]
   }
 ]
+
