@@ -237,6 +237,7 @@ export class SinglyLinkedList {
 
     /**
      * Returns data of node at index 'n'(recursively).
+     * @param {Node} node
      * @param {Number} index
      */
     getNthRecursive(node = this.head, index) {
@@ -270,8 +271,50 @@ export class SinglyLinkedList {
         this.head = prevNode;
     }
 
-    reverseEveryNthNode(n) {
+    /**
+     * Reverse SinglyLinkedList instance in groups of given size.
+     * @param {Number} k
+     * @param {Node} headNode
+     */
+    reverseEveryKNodes(k, headNode) {
+        if (headNode === undefined) {
+            this.head = this.reverseEveryKNodes(k, this.head);
+            return;
+        }
 
+        let prevNode = null;
+        let currNode = headNode;
+        let nextNode = null;
+        let count = 0;
+
+        // Reverse first k nodes of singly linked list segment
+        while (count < k && currNode !== null) {
+            // Before changing current node 'next' property, assign it to next node
+            nextNode = currNode.next;
+
+            // Set current node 'next' property to previous node
+            currNode.next = prevNode;
+
+            // Set node values for next loop
+            prevNode = currNode;
+            currNode = nextNode;
+
+            // Increment count
+            count++;
+        }
+
+        /* After loop, next node and current node is (k+1)th node 
+         * and previous node is kth node.
+         * Recursively call method with (k+1)th node as parameter
+         * and assign result to 'next' property of head node of this segment
+         * of the SinglyLinkedList.
+         */
+        if (nextNode !== null) {
+            headNode.next = this.reverseEveryKNodes(k, nextNode);
+        }
+
+        // Return kth node (previous node)
+        return prevNode;
     }
 
     // TEMP?

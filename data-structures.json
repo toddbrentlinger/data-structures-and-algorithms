@@ -60,6 +60,14 @@
         "description": "Reverse order of nodes in SinglyLinkedList instance."
       },
       {
+        "name": "reverseEveryKNodes(k, headNode)",
+        "description": "Reverse SinglyLinkedList instance in groups of given size."
+      },
+      {
+        "name": "createNNodes(n, isRandom = false)",
+        "description": "Creates new SinglyLinkedList with n-number of nodes with values ranging from 0-(n-1)."
+      },
+      {
         "name": "",
         "description": ""
       }
