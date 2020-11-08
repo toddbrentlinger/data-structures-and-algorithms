@@ -320,7 +320,7 @@ export class SinglyLinkedList {
     // TEMP?
 
     /**
-     * Creates new SinglyLinkedList with n-number of nodes with values ranging from 0-(n-1)
+     * Creates new SinglyLinkedList with n-number of nodes with values ranging from 0-(n-1).
      * @param {Number} n
      * @param {Boolean} isRandom
      */
@@ -328,7 +328,13 @@ export class SinglyLinkedList {
         this.head = null;
 
         for (let i = 0; i < n; i++) {
-            this.append(i);
+            if (isRandom) {
+                this.append(
+                    Math.floor(Math.random() * Math.floor(n))
+                );
+            } else {
+                this.append(i);
+            }
         }
     }
 }

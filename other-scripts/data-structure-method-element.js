@@ -21,10 +21,32 @@ export function createDataStructureMethodElement(methodJSON, globalVar) {
     rootElement.appendChild(childElement);
 
     // Code
-    
-    childElement = document.createElement('code');
-    childElement.innerHTML = globalVar[methodJSON.name.split("(")[0]];
+    // Code - Accordion Button
+    childElement = document.createElement('button');
+    childElement.classList.add('accordion');
+    childElement.innerHTML = "Show Code";
+    childElement.addEventListener('click', function () {
+        /* Toggle between adding and removing the 'active' class,
+         to highlight the button that controls the panel */
+        this.classList.toggle('active');
+
+        // Toggle between hiding and showing the active panel
+        const panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+            this.innerHTML = "Show Code";
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+            this.innerHTML = "Hide Code";
+        }
+    });
     rootElement.appendChild(childElement);
+
+    // Code - Panel
+    childElement = rootElement.appendChild(document.createElement('div'));
+    childElement.classList.add('panel');
+    childElement = childElement.appendChild(document.createElement('code'));
+    childElement.innerHTML = globalVar[methodJSON.name.split("(")[0]];
     
     return rootElement;
 }
