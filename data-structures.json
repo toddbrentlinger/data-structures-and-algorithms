@@ -71,6 +71,16 @@
         "name": "",
         "description": ""
       }
+    ],
+    "staticMethods": [
+      {
+        "name": "mergeTwoSortedLists(firstHeadNode, secondHeadNode)",
+        "description": "Merges two sorted SinglyLinkedList instances to one sorted list."
+      },
+      {
+        "name": "",
+        "description": ""
+      }
     ]
   }
 ]

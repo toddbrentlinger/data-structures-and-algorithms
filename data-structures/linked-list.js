@@ -317,6 +317,45 @@ export class SinglyLinkedList {
         return prevNode;
     }
 
+    /**
+     * Merges two sorted SinglyLinkedList instances to one sorted list.
+     * @param {SinglyLinkedList} firstHeadNode
+     * @param {SinglyLinkedList} secondHeadNode
+     */
+    static mergeTwoSortedLists(firstHeadNode, secondHeadNode) {
+        // Dummy first node to hang the result on
+        let dummyNode = new Node(0);
+
+        // Tail node initialized to dummy node
+        let tail = dummyNode;
+        while (true) {
+            // If reaches either list, add other list to end
+            if (firstHeadNode === null) {
+                tail.next = secondHeadNode;
+                break;
+            }
+            if (secondHeadNode === null) {
+                tail.next = firstHeadNode;
+                break;
+            }
+
+            /* Compare the data of the two lists. Whichever list's data 
+             is smaller, append it into tail and advance the head to the
+             next node. */
+            if (firstHeadNode.data <= secondHeadNode.data) {
+                tail.next = firstHeadNode;
+                firstHeadNode = firstHeadNode.next;
+            } else {
+                tail.next = secondHeadNode;
+                secondHeadNode = secondHeadNode.next;
+            }
+
+            // Advance the tail
+            tail = tail.next;
+        }
+        return dummyNode.next;
+    }
+
     // TEMP?
 
     /**
