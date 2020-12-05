@@ -78,6 +78,14 @@
         "description": "Merges two sorted SinglyLinkedList instances to one sorted list."
       },
       {
+        "name": "mergeSort(headNode)",
+        "description": "Merge sort linked list."
+      },
+      {
+        "name": "getMiddle(headNode)",
+        "description": "Utility function to get middle of the linked list."
+      },
+      {
         "name": "",
         "description": ""
       }

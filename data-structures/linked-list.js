@@ -328,8 +328,9 @@ export class SinglyLinkedList {
 
         // Tail node initialized to dummy node
         let tail = dummyNode;
+
         while (true) {
-            // If reaches either list, add other list to end
+            // If reaches either list, add rest of other list to end
             if (firstHeadNode === null) {
                 tail.next = secondHeadNode;
                 break;
@@ -354,6 +355,57 @@ export class SinglyLinkedList {
             tail = tail.next;
         }
         return dummyNode.next;
+    }
+
+    /**
+     * Merge sort linked list.
+     * @param {Node} headNode
+     */
+    static mergeSort(headNode) {
+        // Base case
+        if (headNode === null || headNode.next === null)
+            return headNode;
+
+        // Get middle of the list
+        const middle = SinglyLinkedList.getMiddle(headNode);
+        const nextOfMiddle = middle.next;
+
+        // Set the next of middle to null
+        middle.next = null;
+
+        // Apply mergeSort on left list
+        const left = SinglyLinkedList.mergeSort(headNode);
+
+        // Apply mergeSort on right lest
+        const right = SinglyLinkedList.mergeSort(nextOfMiddle);
+
+        // Merge the left and right lists
+        const sortedList = SinglyLinkedList.mergeTwoSortedLists(left, right);
+        return sortedList;
+    }
+
+    /**
+     * Utility function to get middle of the linked list.
+     * @param {Node} headNode
+     */
+    static getMiddle(headNode) {
+        // Base case
+        if (headNode === null)
+            return headNode;
+
+        let fastRef = headNode.next;
+        let slowRef = headNode;
+
+        // Move fastRef by two and slowRef by one
+        // After loop, slowRef will refer to middle node
+        while (fastRef !== null) {
+            fastRef = fastRef.next;
+            if (fastRef !== null) {
+                slowRef = slowRef.next;
+                fastRef = fastRef.next;
+            }
+        }
+        return slowRef;
     }
 
     // TEMP?
