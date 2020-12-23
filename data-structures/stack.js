@@ -26,15 +26,47 @@ export class StackWithLinkedList {
     }
 
     push(data) {
+        const newNode = new StackNode(data);
 
+        if (this.isEmpty()) {
+            this.head = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        console.log(`${data} pushed to stack`);
     }
 
     pop() {
-
+        if (this.isEmpty()) {
+            console.log("Stack is Empty");
+        } else {
+            const poppedData = this.head.data;
+            this.head = this.head.next;
+            console.log(`${poppedData} popped from stack`);
+            return poppedData;
+        }
     }
 
     peek() {
+        if (this.isEmpty()) {
+            console.log("Stack is Empty");
+        } else {
+            console.log(`${this.head.data} on top of stack`);
+            return this.head.data;
+        }
+    }
 
+    print() {
+        if (this.isEmpty()) {
+            console.log("Stack is Empty");
+        } else {
+            let currNode = this.head;
+            while (currNode !== null) {
+                console.log(currNode.data);
+                currNode = currNode.next;
+            }
+        }
     }
 }
 
@@ -86,13 +118,13 @@ export class StackWithArray {
         }
     }
 
-    /** Print each element of stack to console. */
+    /** Print each element of stack (top-to-bottom) to console. */
     print() {
         if (this.top === -1) {
             console.log("Stack is Empty");
             return;
         } else {
-            for (let i = 0; i <= this.top; i++) {
+            for (let i = this.top; i >= 0; i--) {
                 console.log(this.elementArr[i]);
             }
         }
