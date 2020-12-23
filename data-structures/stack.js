@@ -25,6 +25,10 @@ export class StackWithLinkedList {
         return (this.head === null);
     }
 
+    /**
+     * Adds an item in the stack. If the stack is full, then it is said to be an Overflow condition.
+     * @param {Object} item
+     */
     push(data) {
         const newNode = new StackNode(data);
 
@@ -37,6 +41,7 @@ export class StackWithLinkedList {
         console.log(`${data} pushed to stack`);
     }
 
+    /** Removes an item from the stack. The items are popped in the reversed order in which they are pushed. If the stack is empty, then it is said to be an Underflow condition. */
     pop() {
         if (this.isEmpty()) {
             console.log("Stack is Empty");
@@ -48,6 +53,7 @@ export class StackWithLinkedList {
         }
     }
 
+    /** Returns top element of stack. */
     peek() {
         if (this.isEmpty()) {
             console.log("Stack is Empty");
@@ -57,6 +63,7 @@ export class StackWithLinkedList {
         }
     }
 
+    /** Print each element of stack (top-to-bottom) to console. */
     print() {
         if (this.isEmpty()) {
             console.log("Stack is Empty");
@@ -77,7 +84,7 @@ export class StackWithArray {
      * @constructor
      * @param {Number} size
      */
-    contructor(size) {
+    constructor(size) {
         this.elementArr = new Array(size);
         this.top = -1; // Index of top element
         this.max = size; // Maximum size of stack
@@ -100,7 +107,7 @@ export class StackWithArray {
     pop() {
         if (this.top === -1) {
             console.log("Stack is empty");
-            return -1;
+            return;
         } else {
             console.log(`${this.elementArr[this.top]} popped from stack`);
             return this.elementArr[this.top--];

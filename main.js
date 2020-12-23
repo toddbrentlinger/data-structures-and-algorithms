@@ -1,10 +1,15 @@
 ﻿import { SinglyLinkedList } from './data-structures/linked-list.js';
-import { StackFromArray } from './data-structures/stack.js'; 
+import { StackWithLinkedList, StackWithArray } from './data-structures/stack.js'; 
 
 import { createDataStructureElement } from './other-scripts/data-structure-element.js';
 
+// Linked List
 window.singlyLinkedList = new SinglyLinkedList();
-window.stackFromArray = new StackFromArray(100);
+
+// Stack
+window.stackWithLinkedList = new StackWithLinkedList();
+window.stackWithArray = new StackWithArray(100);
+
 init();
 
 function init() {

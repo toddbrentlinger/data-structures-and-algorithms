@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\data-structures"
+    "\\data-structures",
+    "\\other-scripts"
   ],
-  "SelectedNode": "\\main.js",
+  "SelectedNode": "\\data-structures.json",
   "PreviewInSolutionExplorer": false
 }
