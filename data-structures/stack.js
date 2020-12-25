@@ -90,6 +90,11 @@ export class StackWithArray {
         this.max = size; // Maximum size of stack
     }
 
+    /** Returns true if stack is empty, else false. */
+    isEmpty() {
+        return (this.top === -1);
+    }
+
     /**
      * Adds an item in the stack. If the stack is full, then it is said to be an Overflow condition.
      * @param {Object} item
@@ -136,4 +141,104 @@ export class StackWithArray {
             }
         }
     }
+}
+
+/**
+ * Convert infix expression to postfix expression.
+ * @param {String} inflixStr
+ */
+export function infixToPostfix(inflixStr) {
+    /**
+     * Returns precendence of operator.
+     * @param {String} operator
+     */
+    function operatorPrecedence(operator) {
+        switch (operator) {
+            case '+':
+            case '-':
+                return 1;
+            case '*':
+            case '/':
+                return 2;
+            case '^':
+                return 3;
+            default:
+                return -1;
+        }
+    }
+
+    let postfixStr = "";
+    let opStack = new StackWithLinkedList();
+
+    // Scan the inflix expression from left to right
+    for (let i = 0; i < inflixStr.length; i++) {
+        // Scanned character
+        const c = inflixStr[i];
+
+        // If scanned character is an operand, append to postfix string
+        if ((c >= 'a' && c <= 'z') ||
+            (c >= 'A' && c <= 'Z')) {
+            postfixStr += c;
+        }
+        // If scanned character is '(', push it to the operator stack
+        else if (c === '(') {
+            opStack.push(c);
+        }
+        /* If scanned character is ')', pop the stack until the corresponding '(' is removed.
+         * Append each operator to the postfix string. */
+        else if (c === ')') {
+            while (opStack.peek() !== '(') {
+                postfixStr += opStack.pop();
+            }
+            // Remove '(' from operator stack
+            opStack.pop();
+        }
+        /* Else scanned character is an operator, push it to the operator stack.
+         * However, first remove any operators on the operator stack that 
+         * have higher or equal precedence and append them to the postfix string. */
+        else {
+
+        }
+    }
+}
+
+export function infixToPostfixUnitTest() {
+    const tests = [
+        {
+            'input': "a+b*c+d",
+            'outputExpected': "abc*+d+"
+        },
+        {
+            'input': "a+b*c",
+            'outputExpected': "abc*+"
+        },
+        {
+            'input': "(a + b) * c",
+            'outputExpected': "ab+c*"
+        },
+        {
+            'input': "A + B * C + D",
+            'outputExpected': "ABC*+D+"
+        },
+        {
+            'input': "(A+B)*(C+D)",
+            'outputExpected': "AB+CD+*"
+        },
+        {
+            'input': "A*B+C*D",
+            'outputExpected': "AB*CD*+"
+        },
+        {
+            'input': "A+B+C+D",
+            'outputExpected': "AB+C+D+"
+        },
+        {
+            'input': "a+b*(c^d-e)^(f+g*h)-i",
+            'outputExpected':
+        },
+        {
+            'input': "",
+            'outputExpected': ""
+        },
+    ];
 }
