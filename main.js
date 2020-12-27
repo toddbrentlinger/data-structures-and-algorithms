@@ -1,5 +1,5 @@
 ﻿import { SinglyLinkedList } from './data-structures/linked-list.js';
-import { StackWithLinkedList, StackWithArray } from './data-structures/stack.js'; 
+import { StackWithLinkedList, StackWithArray, infixToPostfix, infixToPostfixUnitTest } from './data-structures/stack.js'; 
 
 import { createDataStructureElement } from './other-scripts/data-structure-element.js';
 
@@ -9,6 +9,8 @@ window.singlyLinkedList = new SinglyLinkedList();
 // Stack
 window.stackWithLinkedList = new StackWithLinkedList();
 window.stackWithArray = new StackWithArray(100);
+infixToPostfixUnitTest();
+window.infixToPostfix = infixToPostfix;
 
 init();
 

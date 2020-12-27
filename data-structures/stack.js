@@ -38,7 +38,7 @@ export class StackWithLinkedList {
             newNode.next = this.head;
             this.head = newNode;
         }
-        console.log(`${data} pushed to stack`);
+        //console.log(`${data} pushed to stack`);
     }
 
     /** Removes an item from the stack. The items are popped in the reversed order in which they are pushed. If the stack is empty, then it is said to be an Underflow condition. */
@@ -48,7 +48,7 @@ export class StackWithLinkedList {
         } else {
             const poppedData = this.head.data;
             this.head = this.head.next;
-            console.log(`${poppedData} popped from stack`);
+            //console.log(`${poppedData} popped from stack`);
             return poppedData;
         }
     }
@@ -58,7 +58,7 @@ export class StackWithLinkedList {
         if (this.isEmpty()) {
             console.log("Stack is Empty");
         } else {
-            console.log(`${this.head.data} on top of stack`);
+            //console.log(`${this.head.data} on top of stack`);
             return this.head.data;
         }
     }
@@ -152,7 +152,7 @@ export function infixToPostfix(inflixStr) {
      * Returns precendence of operator.
      * @param {String} operator
      */
-    function operatorPrecedence(operator) {
+    function opPrecedence(operator) {
         switch (operator) {
             case '+':
             case '-':
@@ -187,7 +187,7 @@ export function infixToPostfix(inflixStr) {
         /* If scanned character is ')', pop the stack until the corresponding '(' is removed.
          * Append each operator to the postfix string. */
         else if (c === ')') {
-            while (opStack.peek() !== '(') {
+            while (!opStack.isEmpty() && opStack.peek() !== '(') {
                 postfixStr += opStack.pop();
             }
             // Remove '(' from operator stack
@@ -197,9 +197,19 @@ export function infixToPostfix(inflixStr) {
          * However, first remove any operators on the operator stack that 
          * have higher or equal precedence and append them to the postfix string. */
         else {
-
+            while (!opStack.isEmpty() && opPrecedence(opStack.peek()) >= opPrecedence(c)) {
+                postfixStr += opStack.pop();
+            }
+            opStack.push(c);
         }
     }
+
+    // Pop any remaining operators in stack to postfix string
+    while (!opStack.isEmpty()) {
+        postfixStr += opStack.pop();
+    }
+
+    return postfixStr;
 }
 
 export function infixToPostfixUnitTest() {
@@ -213,11 +223,11 @@ export function infixToPostfixUnitTest() {
             'outputExpected': "abc*+"
         },
         {
-            'input': "(a + b) * c",
+            'input': "(a+b)*c",
             'outputExpected': "ab+c*"
         },
         {
-            'input': "A + B * C + D",
+            'input': "A+B*C+D",
             'outputExpected': "ABC*+D+"
         },
         {
@@ -232,13 +242,26 @@ export function infixToPostfixUnitTest() {
             'input': "A+B+C+D",
             'outputExpected': "AB+C+D+"
         },
+        /*
         {
             'input': "a+b*(c^d-e)^(f+g*h)-i",
-            'outputExpected':
+            'outputExpected': ""
         },
         {
             'input': "",
             'outputExpected': ""
-        },
+        }*/
     ];
+
+    tests.forEach(test => {
+        const output = infixToPostfix(test['input']);
+        const success = output === test['outputExpected'];
+
+        console.log(
+            "Input", test['input'], '\n',
+            "Expected", test['outputExpected'], '\n',
+            "Output", output, '\n',
+            "Success", success
+        );
+    });
 }
