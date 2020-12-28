@@ -177,7 +177,8 @@ export function infixToPostfix(inflixStr) {
 
         // If scanned character is an operand, append to postfix string
         if ((c >= 'a' && c <= 'z') ||
-            (c >= 'A' && c <= 'Z')) {
+            (c >= 'A' && c <= 'Z') ||
+            !isNaN(c)) {
             postfixStr += c;
         }
         // If scanned character is '(', push it to the operator stack
@@ -264,4 +265,59 @@ export function infixToPostfixUnitTest() {
             "Success", success
         );
     });
+}
+
+/**
+ * 
+ * @param {String} postfix
+ */
+export function evaluatePostfix(postfix) {
+    let opStack = new StackWithLinkedList();
+
+    /**
+     * 
+     * @param {String} operator
+     * @param {String|Number} operand1
+     * @param {String|Number} operand2
+     */
+    function evaluateOperator(operator, operand1, operand2) {
+        if (typeof operand1 === 'string')
+            operand1 = parseInt(operand1, 10);
+        if (typeof operand2 === 'string')
+            operand2 = parseInt(operand2, 10);
+
+        switch (operator) {
+            case '^':
+                return operand1 ^ operand2;
+            case '*':
+                return operand1 * operand2;
+            case '/':
+                return operand1 / operand2;
+            case '+':
+                return operand1 + operand2;
+            case '-':
+                return operand1 - operand2;
+            default:
+                return;
+        }
+    }
+
+    for (let i = 0; i < postfix.length; i++) {
+        const c = postfix[i];
+
+        // If element is a number, push it into the stack
+        if (!isNaN(c)) {
+            opStack.push(parseInt(c, 10));
+        }
+        // If element is an operator, pop operands for the operator from the stack.
+        // Evaluate the operator and push the result back to the stack.
+        else {
+            const operand2 = opStack.pop();
+            const operand1 = opStack.pop();
+            opStack.push(evaluateOperator(c, operand1, operand2));
+        }
+    }
+
+    // When the expression is ended, the number in the stack is the final answer.
+    return opStack.peek();
 }
