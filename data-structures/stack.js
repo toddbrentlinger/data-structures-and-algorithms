@@ -114,7 +114,7 @@ export class StackWithArray {
             console.log("Stack is empty");
             return;
         } else {
-            console.log(`${this.elementArr[this.top]} popped from stack`);
+            //console.log(`${this.elementArr[this.top]} popped from stack`);
             return this.elementArr[this.top--];
         }
     }
@@ -125,7 +125,7 @@ export class StackWithArray {
             console.log("Stack is Empty");
             return;
         } else {
-            console.log(`${this.elementArr[this.top]} on top of stack`);
+            //console.log(`${this.elementArr[this.top]} on top of stack`);
             return this.elementArr[this.top];
         }
     }
@@ -268,7 +268,7 @@ export function infixToPostfixUnitTest() {
 }
 
 /**
- * 
+ * Evaluate postfix expression.
  * @param {String} postfix
  */
 export function evaluatePostfix(postfix) {
@@ -303,11 +303,22 @@ export function evaluatePostfix(postfix) {
     }
 
     for (let i = 0; i < postfix.length; i++) {
-        const c = postfix[i];
+        let c = postfix[i];
+
+        if (c === " ")
+            continue;
 
         // If element is a number, push it into the stack
-        if (!isNaN(c)) {
-            opStack.push(parseInt(c, 10));
+        else if (!isNaN(c)) {
+            let n = 0;
+
+            while (c !== " " && !isNaN(c)) {
+                n = n * 10 + parseInt(c, 10);
+                c = postfix[++i];
+            }
+            i--;
+
+            opStack.push(n);
         }
         // If element is an operator, pop operands for the operator from the stack.
         // Evaluate the operator and push the result back to the stack.
@@ -320,4 +331,24 @@ export function evaluatePostfix(postfix) {
 
     // When the expression is ended, the number in the stack is the final answer.
     return opStack.peek();
+}
+
+/**
+ * Reverse string using stack data structure.
+ * @param {String} str
+ */
+export function reverseString(str) {
+    const strLength = str.length;
+    let charStack = new StackWithArray(strLength);
+    let reversedStr = "";
+
+    // Add characters of string to stack
+    for (let i = 0; i < strLength; i++)
+        charStack.push(str[i]);
+
+    // Pop characters from stack to reversed string
+    while (!charStack.isEmpty())
+        reversedStr += charStack.pop();
+
+    return reversedStr;
 }

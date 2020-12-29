@@ -121,6 +121,16 @@
         "name": "",
         "description": ""
       }
+    ],
+    "methodsThatUseDataStructure": [
+      {
+        "name": "infixToPostfix(infixStr)",
+        "description": "Convert infix expression to postfix expression."
+      },
+      {
+        "name": "evaluatePostfix(postfix)",
+        "description": "Evaluate postfix expression."
+      }
     ]
   },
   {
@@ -152,6 +162,12 @@
       {
         "name": "",
         "description": ""
+      }
+    ],
+    "methodsThatUseDataStructure": [
+      {
+        "name": "reverseString(str)",
+        "description": "Reverse string using stack data structure."
       }
     ]
   }

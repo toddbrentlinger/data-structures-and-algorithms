@@ -46,7 +46,10 @@ export function createDataStructureMethodElement(methodJSON, globalVar) {
     childElement = rootElement.appendChild(document.createElement('div'));
     childElement.classList.add('panel');
     childElement = childElement.appendChild(document.createElement('code'));
-    childElement.innerHTML = globalVar[methodJSON.name.split("(")[0]];
+    if (globalVar)
+        childElement.innerHTML = globalVar[methodJSON.name.split("(")[0]];
+    else
+        childElement.innerHTML = window[methodJSON.name.split("(")[0]];
     
     return rootElement;
 }

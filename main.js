@@ -1,7 +1,8 @@
 ﻿import { SinglyLinkedList } from './data-structures/linked-list.js';
 import {
     StackWithLinkedList, StackWithArray,
-    infixToPostfix, infixToPostfixUnitTest, evaluatePostfix
+    infixToPostfix, infixToPostfixUnitTest, evaluatePostfix,
+    reverseString
 } from './data-structures/stack.js'; 
 
 import { createDataStructureElement } from './other-scripts/data-structure-element.js';
@@ -15,6 +16,7 @@ window.stackWithArray = new StackWithArray(100);
 infixToPostfixUnitTest();
 window.infixToPostfix = infixToPostfix;
 window.evaluatePostfix = evaluatePostfix;
+window.reverseString = reverseString;
 
 init();
 

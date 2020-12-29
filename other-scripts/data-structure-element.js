@@ -61,5 +61,26 @@ export function createDataStructureElement(dataStructureJSON) {
     });
     rootElement.appendChild(childElement);
 
+    // Methods That Use Data Structure
+    if (dataStructureJSON.hasOwnProperty('methodsThatUseDataStructure')) {
+        // Header
+        childElement = document.createElement('h3');
+        childElement.innerHTML = "Methods That Use Data Structure";
+        rootElement.appendChild(childElement);
+
+        // Code
+        childElement = document.createElement('ul');
+        childElement.classList.add('data-structure-method-container');
+        dataStructureJSON.methodsThatUseDataStructure.forEach(methodJSON => {
+            if (!methodJSON.name)
+                return;
+
+            childElement.appendChild(
+                createDataStructureMethodElement(methodJSON)
+            );
+        });
+        rootElement.appendChild(childElement);
+    }
+
     return rootElement;
 }
