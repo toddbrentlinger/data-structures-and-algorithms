@@ -334,6 +334,32 @@ export function evaluatePostfix(postfix) {
 }
 
 /**
+ * 
+ * @param {String} bracketStr
+ */
+export function areBracketsBalanced(bracketStr) {
+    let charStack = new StackWithLinkedList();
+
+    for (let i = 0; i < bracketStr.length; i++) {
+        const c = bracketStr[i];
+
+        if (c === "(" || c === "{" || c === "[") {
+            charStack.push(c);
+        } else if (c === ")") {
+            if (charStack.pop() !== "(")
+                return false;
+        } else if (c === "}") {
+            if (charStack.pop() !== "{")
+                return false;
+        } else if (c === "]") {
+            if (charStack.pop() !== "[")
+                return false;
+        }
+    }
+    return charStack.isEmpty();
+}
+
+/**
  * Reverse string using stack data structure.
  * @param {String} str
  */
@@ -351,4 +377,50 @@ export function reverseString(str) {
         reversedStr += charStack.pop();
 
     return reversedStr;
+}
+
+/** Implement two stacks in an array. */
+export class TwoStacksInArray {
+    /**
+     * @constructor
+     * @param {Number} size
+     */
+    constructor(size) {
+        this.elementArr = new Array(size);
+        this.max = size; // Maximum size of stack
+        this.top1 = -1; // Index of first stack in front of array
+        this.top2 = size; // Index of second stack in back of array
+    }
+
+    push1(data) {
+        if (this.top1 < this.top2 - 1) {
+            this.elementArr[++this.top1] = data;
+        } else {
+            console.log("Stack Overflow");
+        }
+    }
+
+    push2(data) {
+        if (this.top1 < this.top2 - 1) {
+            this.elementArr[--this.top2] = data;
+        } else {
+            console.log("Stack Overflow");
+        }
+    }
+
+    pop1() {
+        if (this.top1 >= 0) {
+            return this.elementArr[this.top1--];
+        } else {
+            console.log("Stack is Empty");
+        }
+    }
+
+    pop2() {
+        if (this.top2 < this.max) {
+            return this.elementArr[this.top2++];
+        } else {
+            console.log("Stack is Empty");
+        }
+    }
 }
