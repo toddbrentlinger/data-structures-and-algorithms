@@ -143,6 +143,8 @@ export class StackWithArray {
     }
 }
 
+// ---------- Functions That Use Stack With Linked List ----------
+
 /**
  * Convert infix expression to postfix expression.
  * @param {String} inflixStr
@@ -334,7 +336,7 @@ export function evaluatePostfix(postfix) {
 }
 
 /**
- * 
+ * Tests whether brackets in expression are balanced.
  * @param {String} bracketStr
  */
 export function areBracketsBalanced(bracketStr) {
@@ -359,6 +361,36 @@ export function areBracketsBalanced(bracketStr) {
     return charStack.isEmpty();
 }
 
+
+/**
+ * Prints the element and Next Greater Element (NGE) pair for all elements of array.
+ * @param {Number[]} arr
+ * @param {Number} size
+ */
+export function printNGE(arr, size = arr.length) {
+    let indexStack = new StackWithLinkedList(); // Stack to store indices
+    const ngeArr = new Array(size).fill(-1); // Array of next greater elements initialized to -1
+
+    indexStack.push(0); // Push the first element index to stack
+
+    for (let i = 1; i < size; i++) {
+        const next = arr[i];
+
+        while (!indexStack.isEmpty() && next > arr[indexStack.peek()]) {
+            ngeArr[indexStack.pop()] = arr[i];
+        }
+
+        indexStack.push(i);
+    }
+
+    // Print each element and NGE pair
+    for (let i = 0; i < size; i++) {
+        console.log(`${arr[i]} --> ${ngeArr[i]}`);
+    }
+}
+
+// ---------- Functions That Use Stack With Array ----------
+
 /**
  * Reverse string using stack data structure.
  * @param {String} str
@@ -378,6 +410,8 @@ export function reverseString(str) {
 
     return reversedStr;
 }
+
+// ---------- Two Stacks With Array ----------
 
 /** Implement two stacks in an array. */
 export class TwoStacksInArray {

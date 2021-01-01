@@ -130,6 +130,14 @@
       {
         "name": "evaluatePostfix(postfix)",
         "description": "Evaluate postfix expression."
+      },
+      {
+        "name": "areBracketsBalanced(bracketStr)",
+        "description": "Tests whether brackets in expression are balanced."
+      },
+      {
+        "name": "printNGE(arr, size = arr.length)",
+        "description": "Prints the element and Next Greater Element (NGE) pair for all elements of array."
       }
     ]
   },
@@ -168,6 +176,44 @@
       {
         "name": "reverseString(str)",
         "description": "Reverse string using stack data structure."
+      }
+    ]
+  },
+  {
+    "data-structure": "Two Stacks In Array",
+    "global-variable": "twoStacksInArray",
+    "methods": [
+      {
+        "name": "push1(item)",
+        "description": "Adds an item in the front stack. If the stack is full, then it is said to be an Overflow condition."
+      },
+      {
+        "name": "push2(item)",
+        "description": "Adds an item in the back stack. If the stack is full, then it is said to be an Overflow condition."
+      },
+      {
+        "name": "pop1()",
+        "description": "Removes an item from the front stack. The items are popped in the reversed order in which they are pushed. If the stack is empty, then it is said to be an Underflow condition."
+      },
+      {
+        "name": "pop2()",
+        "description": "Removes an item from the back stack. The items are popped in the reversed order in which they are pushed. If the stack is empty, then it is said to be an Underflow condition."
+      },
+      {
+        "name": "",
+        "description": ""
+      }
+    ],
+    "staticMethods": [
+      {
+        "name": "",
+        "description": ""
+      }
+    ],
+    "methodsThatUseDataStructure": [
+      {
+        "name": "",
+        "description": ""
       }
     ]
   }

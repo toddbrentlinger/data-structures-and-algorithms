@@ -1,7 +1,7 @@
 ﻿import { SinglyLinkedList } from './data-structures/linked-list.js';
 import {
     StackWithLinkedList, StackWithArray,
-    infixToPostfix, infixToPostfixUnitTest, evaluatePostfix, areBracketsBalanced,
+    infixToPostfix, infixToPostfixUnitTest, evaluatePostfix, areBracketsBalanced, printNGE,
     reverseString,
     TwoStacksInArray
 } from './data-structures/stack.js'; 
@@ -18,6 +18,7 @@ window.stackWithArray = new StackWithArray(10);
 window.infixToPostfix = infixToPostfix;
 window.evaluatePostfix = evaluatePostfix;
 window.areBracketsBalanced = areBracketsBalanced;
+window.printNGE = printNGE;
 window.reverseString = reverseString;
 window.twoStacksInArray = new TwoStacksInArray(10);
 
