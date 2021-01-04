@@ -27,10 +27,10 @@ export class StackWithLinkedList {
 
     /**
      * Adds an item in the stack. If the stack is full, then it is said to be an Overflow condition.
-     * @param {Object} item
+     * @param {any} item
      */
-    push(data) {
-        const newNode = new StackNode(data);
+    push(item) {
+        const newNode = new StackNode(item);
 
         if (this.isEmpty()) {
             this.head = newNode;
@@ -75,6 +75,40 @@ export class StackWithLinkedList {
             }
         }
     }
+
+    /**
+     * Recursive function that inserts an element at bottom of the stack.
+     * @param {any} item
+     */
+    insertAtBottom(item) {
+        if (this.isEmpty()) {
+            this.push(item);
+        } else {
+            /* All items are held in Function Call Stack until we reach end
+             * of the stack. When the stack becomes empty, the above if part is
+             * executed and the item is inserted at the bottom. */
+            const topItem = this.pop();
+            this.insertAtBottom(item);
+
+            /* Push all the items held in Function Call Stack once the item
+             * is inserted at the bottom. */
+            this.push(topItem);
+        }
+    }
+
+    /** Reverse the linked list instance using recursive insertAtBottom() */
+    reverse() {
+        if (!this.isEmpty()) {
+            /* Hold all items in Function Call Stack until we reach end of
+             * the stack. */
+            const topItem = this.pop();
+            this.reverse();
+
+            /* Insert all the items held in Function Call Stack one by one
+             * from the bottom to top. Every item is inserted at the bottom. */
+            this.insertAtBottom(topItem);
+        }
+    }
 }
 
 // ---------- Stack With Array ----------
@@ -97,7 +131,7 @@ export class StackWithArray {
 
     /**
      * Adds an item in the stack. If the stack is full, then it is said to be an Overflow condition.
-     * @param {Object} item
+     * @param {any} item
      */
     push(item) {
         if (this.top === this.max - 1) {
@@ -139,6 +173,40 @@ export class StackWithArray {
             for (let i = this.top; i >= 0; i--) {
                 console.log(this.elementArr[i]);
             }
+        }
+    }
+
+    /**
+     * Recursive function that inserts an element at bottom of the stack.
+     * @param {any} item
+     */
+    insertAtBottom(item) {
+        if (this.isEmpty()) {
+            this.push(item);
+        } else {
+            /* All items are held in Function Call Stack until we reach end
+             * of the stack. When the stack becomes empty, the above if part is
+             * executed and the item is inserted at the bottom. */
+            const topItem = this.pop();
+            this.insertAtBottom(item);
+
+            /* Push all the items held in Function Call Stack once the item
+             * is inserted at the bottom. */
+            this.push(topItem);
+        }
+    }
+
+    /** Reverse the linked list instance using recursive insertAtBottom() */
+    reverse() {
+        if (!this.isEmpty()) {
+            /* Hold all items in Function Call Stack until we reach end of
+             * the stack. */
+            const topItem = this.pop();
+            this.reverse();
+
+            /* Insert all the items held in Function Call Stack one by one
+             * from the bottom to top. Every item is inserted at the bottom. */
+            this.insertAtBottom(topItem);
         }
     }
 }

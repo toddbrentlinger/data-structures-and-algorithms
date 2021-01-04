@@ -112,6 +112,14 @@
         "description": "Print each element of stack (top-to-bottom) to console."
       },
       {
+        "name": "insertAtBottom(item)",
+        "description": "Recursive function that inserts an element at bottom of the stack."
+      },
+      {
+        "name": "reverse()",
+        "description": "Reverse the linked list instance using recursive insertAtBottom()"
+      },
+      {
         "name": "",
         "description": ""
       }
@@ -160,6 +168,14 @@
       {
         "name": "print()",
         "description": "Print each element of stack (top-to-bottom) to console."
+      },
+      {
+        "name": "insertAtBottom(item)",
+        "description": "Recursive function that inserts an element at bottom of the stack."
+      },
+      {
+        "name": "reverse()",
+        "description": "Reverse the linked list instance using recursive insertAtBottom()"
       },
       {
         "name": "",
