@@ -109,6 +109,63 @@ export class StackWithLinkedList {
             this.insertAtBottom(topItem);
         }
     }
+
+    /**
+     * Sorts stack with values in ascending/descending order.
+     * @param {Boolean} toAscending
+     */
+    sort(toAscending = true) {
+        if (!this.isEmpty()) {
+            const temp = this.pop(); // Pop top item
+            this.sort(toAscending); // Sort remaining stack
+
+            // Push the top item back to sorted stack
+            if (toAscending)
+                StackWithLinkedList.sortedInsert(this, temp);
+            else
+                StackWithLinkedList.sortedInsertDescending(this, temp);
+        }
+    }
+
+    /**
+     * Insert element into stack in ascending sorted way.
+     * @param {StackWithLinkedList} stack
+     * @param {any} element
+     */
+    static sortedInsert(stack, element) {
+        if (stack.isEmpty() || element > stack.peek()) {
+            stack.push(element);
+        }
+        /* Else top of stack is greater than element, pop the top item
+         * and recursively call sortedInsert. */
+        else {
+            const temp = stack.pop();
+            StackWithLinkedList.sortedInsert(stack, element);
+
+            // Push back the top item removed earlier
+            stack.push(temp);
+        }
+    }
+
+    /**
+     * Insert element into stack in descending sorted way.
+     * @param {StackWithLinkedList} stack
+     * @param {any} element
+     */
+    static sortedInsertDescending(stack, element) {
+        if (stack.isEmpty() || element < stack.peek()) {
+            stack.push(element);
+        }
+        /* Else top of stack is lesser than element, pop the top item
+         * and recursively call sortedInsertDescending. */
+        else {
+            const temp = stack.pop();
+            StackWithLinkedList.sortedInsertDescending(stack, element);
+
+            // Push back the top item removed earlier
+            stack.push(temp);
+        }
+    }
 }
 
 // ---------- Stack With Array ----------
@@ -207,6 +264,63 @@ export class StackWithArray {
             /* Insert all the items held in Function Call Stack one by one
              * from the bottom to top. Every item is inserted at the bottom. */
             this.insertAtBottom(topItem);
+        }
+    }
+
+    /**
+     * Sorts stack with values in ascending/descending order.
+     * @param {Boolean} toAscending
+     */
+    sort(toAscending = true) {
+        if (!this.isEmpty()) {
+            const temp = this.pop(); // Pop top item
+            this.sort(toAscending); // Sort remaining stack
+
+            // Push the top item back to sorted stack
+            if (toAscending)
+                StackWithLinkedList.sortedInsert(this, temp);
+            else
+                StackWithLinkedList.sortedInsertDescending(this, temp);
+        }
+    }
+
+    /**
+     * Insert element into stack in ascending sorted way.
+     * @param {StackWithLinkedList} stack
+     * @param {any} element
+     */
+    static sortedInsert(stack, element) {
+        if (stack.isEmpty() || element > stack.peek()) {
+            stack.push(element);
+        }
+        /* Else top of stack is greater than element, pop the top item
+         * and recursively call sortedInsert. */
+        else {
+            const temp = stack.pop();
+            StackWithLinkedList.sortedInsert(stack, element);
+
+            // Push back the top item removed earlier
+            stack.push(temp);
+        }
+    }
+
+    /**
+     * Insert element into stack in descending sorted way.
+     * @param {StackWithLinkedList} stack
+     * @param {any} element
+     */
+    static sortedInsertDescending(stack, element) {
+        if (stack.isEmpty() || element < stack.peek()) {
+            stack.push(element);
+        }
+        /* Else top of stack is lesser than element, pop the top item
+         * and recursively call sortedInsertDescending. */
+        else {
+            const temp = stack.pop();
+            StackWithLinkedList.sortedInsertDescending(stack, element);
+
+            // Push back the top item removed earlier
+            stack.push(temp);
         }
     }
 }

@@ -120,11 +120,23 @@
         "description": "Reverse the linked list instance using recursive insertAtBottom()"
       },
       {
+        "name": "sort(toAscending = true)",
+        "description": "Sorts stack with values in ascending/descending order."
+      },
+      {
         "name": "",
         "description": ""
       }
     ],
     "staticMethods": [
+      {
+        "name": "sortedInsert(stack, element)",
+        "description": "Insert element into stack in ascending sorted way."
+      },
+      {
+        "name": "sortedInsertDescending(stack, element)",
+        "description": "Insert element into stack in descending sorted way."
+      },
       {
         "name": "",
         "description": ""
@@ -178,11 +190,23 @@
         "description": "Reverse the linked list instance using recursive insertAtBottom()"
       },
       {
+        "name": "sort(toAscending = true)",
+        "description": "Sorts stack with values in ascending/descending order."
+      },
+      {
         "name": "",
         "description": ""
       }
     ],
     "staticMethods": [
+      {
+        "name": "sortedInsert(stack, element)",
+        "description": "Insert element into stack in ascending sorted way."
+      },
+      {
+        "name": "sortedInsertDescending(stack, element)",
+        "description": "Insert element into stack in descending sorted way."
+      },
       {
         "name": "",
         "description": ""
