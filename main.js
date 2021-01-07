@@ -4,7 +4,9 @@ import {
     infixToPostfix, infixToPostfixUnitTest, evaluatePostfix, areBracketsBalanced, printNGE,
     reverseString,
     TwoStacksInArray
-} from './data-structures/stack.js'; 
+} from './data-structures/stack.js';
+import { QueueWithLinkedList, QueueWithArray } from './data-structures/queue.js';
+import { BinaryTree, TreeNode } from './data-structures/binary-tree.js';
 
 import { createDataStructureElement } from './other-scripts/data-structure-element.js';
 
@@ -21,6 +23,15 @@ window.areBracketsBalanced = areBracketsBalanced;
 window.printNGE = printNGE;
 window.reverseString = reverseString;
 window.twoStacksInArray = new TwoStacksInArray(10);
+
+// Queue
+window.queueWithLinkedList = new QueueWithLinkedList();
+window.queueWithArray = new QueueWithArray(10);
+window.QueueWithArray = QueueWithArray;
+
+// Binary Tree
+window.binaryTree = new BinaryTree();
+window.TreeNode = TreeNode;
 
 init();
 

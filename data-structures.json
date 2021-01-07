@@ -256,6 +256,56 @@
         "description": ""
       }
     ]
+  },
+  {
+    "data-structure": "Queue With Array",
+    "global-variable": "queueWithArray",
+    "methods": [
+      {
+        "name": "enqueue(item)",
+        "description": "Adds an item to the queue. If the queue is full, then it is said to be an Overflow condition."
+      },
+      {
+        "name": "dequeue()",
+        "description": "Removes an item from the queue. The items are popped in the same order they are pushed. If the queue is empty, then it is said to be an Underflow conidition."
+      },
+      {
+        "name": "front()",
+        "description": "Get the front item from the queue."
+      },
+      {
+        "name": "rear()",
+        "description": "Get the last item from the queue."
+      },
+      {
+        "name": "isEmpty()",
+        "description": "Returns if queue is empty."
+      },
+      {
+        "name": "isFull()",
+        "description": "Returns if queue is at capacity."
+      },
+      {
+        "name": "print()",
+        "description": "Print queue."
+      },
+      {
+        "name": "",
+        "description": ""
+      }
+    ],
+    "staticMethods": [
+      {
+        "name": "",
+        "description": ""
+      }
+    ],
+    "methodsThatUseDataStructure": [
+      {
+        "name": "",
+        "description": ""
+      }
+    ]
   }
 ]
 
