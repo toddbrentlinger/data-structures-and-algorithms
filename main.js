@@ -26,6 +26,7 @@ window.twoStacksInArray = new TwoStacksInArray(10);
 
 // Queue
 window.queueWithLinkedList = new QueueWithLinkedList();
+window.QueueWithLinkedList = QueueWithLinkedList;
 window.queueWithArray = new QueueWithArray(10);
 window.QueueWithArray = QueueWithArray;
 
