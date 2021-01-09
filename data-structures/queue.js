@@ -17,7 +17,7 @@ export class QueueWithLinkedList {
      * @param {QueueNode} firstNode
      */
     constructor(firstNode = null) {
-        this.head = firstNode;
+        this.front = this.rear = firstNode;
     }
 
     /**
@@ -25,16 +25,18 @@ export class QueueWithLinkedList {
      * @param {any} item
      */
     enqueue(item) {
-        if (this.head === null) {
-            this.head = new QueueNode(item);
-        } else {
-            let tempNode = this.head;
-            while (tempNode.next !== null) {
-                tempNode = tempNode.next;
-            }
-            tempNode.next = new QueueNode(item);
+        // Create node
+        const tempNode = new QueueNode(item);
+
+        // If queue is empty, assign node to front and rear
+        if (this.isEmpty()) {
+            this.front = this.rear = tempNode;
+            return;
         }
-        console.log(`${item} is enqueued`);
+
+        // Assign node to end of queue and change rear
+        this.rear.next = tempNode;
+        this.rear = this.rear.next;
     }
 
     /** Removes an item from the queue. The items are popped in the same order they are pushed.
@@ -45,38 +47,43 @@ export class QueueWithLinkedList {
             return;
         }
 
-        const tempNode = this.head;
-        this.head = this.head.next;
-        return tempNode.data;
+        // Get temp front node
+        const frontNode = this.front;
+
+        // Change front
+        this.front = this.front.next;
+
+        // If front becomes null, change rear to null
+        if (this.front === null)
+            this.rear = null;
+
+        // Return temp front node data
+        return frontNode.data;
     }
 
-    /** Get the front item from the queue. */
-    front() {
+    /** Get the front item from the queue without removing from queue. */
+    peekFront() {
         if (this.isEmpty()) {
             console.log("Queue is Empty");
             return;
         }
 
-        return this.head.data;
+        return this.front.data;
     }
 
-    /** Get the last item from the queue. */
-    rear() {
+    /** Get the last item from the queue without removing from queue. */
+    peekRear() {
         if (this.isEmpty()) {
             console.log("Queue is Empty");
             return;
         }
 
-        let tempNode = this.head;
-        while (tempNode.next !== null) {
-            tempNode = tempNode.next;
-        }
-        return tempNode.data;
+        return this.rear.data;
     }
 
     /** Returns if queue is empty. */
     isEmpty() {
-        return (this.head === null);
+        return (this.rear === null);
     }
 
     /** Print queue. */
@@ -86,7 +93,7 @@ export class QueueWithLinkedList {
             return;
         }
 
-        let tempNode = this.head;
+        let tempNode = this.front;
         while (tempNode !== null) {
             console.log(`${tempNode.data} enqueued to queue`);
             tempNode = tempNode.next;
