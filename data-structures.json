@@ -270,11 +270,11 @@
         "description": "Removes an item from the queue. The items are popped in the same order they are pushed. If the queue is empty, then it is said to be an Underflow conidition."
       },
       {
-        "name": "front()",
+        "name": "peekFront()",
         "description": "Get the front item from the queue."
       },
       {
-        "name": "rear()",
+        "name": "peekRear()",
         "description": "Get the last item from the queue."
       },
       {
@@ -316,11 +316,11 @@
         "description": "Removes an item from the queue. The items are popped in the same order they are pushed. If the queue is empty, then it is said to be an Underflow conidition."
       },
       {
-        "name": "front()",
+        "name": "peekFront()",
         "description": "Get the front item from the queue."
       },
       {
-        "name": "rear()",
+        "name": "peekRear()",
         "description": "Get the last item from the queue."
       },
       {

@@ -1,4 +1,4 @@
-﻿import { SinglyLinkedList } from './data-structures/linked-list.js';
+﻿import { SinglyLinkedList, DoublyLinkedList } from './data-structures/linked-list.js';
 import {
     StackWithLinkedList, StackWithArray,
     infixToPostfix, infixToPostfixUnitTest, evaluatePostfix, areBracketsBalanced, printNGE,
@@ -12,6 +12,9 @@ import { createDataStructureElement } from './other-scripts/data-structure-eleme
 
 // Linked List
 window.singlyLinkedList = new SinglyLinkedList();
+window.SinglyLinkedList = SinglyLinkedList;
+window.doublyLinkedList = new DoublyLinkedList();
+window.DoublyLinkedList = DoublyLinkedList;
 
 // Stack
 window.stackWithLinkedList = new StackWithLinkedList();

@@ -80,7 +80,7 @@ export class SinglyLinkedList {
 
     /**
      * Creates new node with data parameter and adds to end of SinglyLinkedList.
-     * @param {Object} data
+     * @param {any} data
      */
     append(data) {
         const newNode = new Node(data);
@@ -97,7 +97,7 @@ export class SinglyLinkedList {
     /**
      * Creates new node with data parameter and inserts after prevNode parameter.
      * @param {Node} prevNode
-     * @param {Object} data
+     * @param {any} data
      */
     insertAfter(prevNode, data) {
         // Check if prevNode is null
@@ -441,10 +441,123 @@ export class CircularLinkedList {
 export class DoublyLinkedNode extends Node {
     constructor(data) {
         super(data);
-        this.prevNode = null;
+        this.prev = null;
     }
 }
 
+/** @todo Can extend SinglyLinkedList to use some of the same methods
+ *        like print(), getLast(), etc. */
 export class DoublyLinkedList {
+    constructor(firstNode = null) {
+        this.head = firstNode;
+    }
 
+    /**
+     * Inserts new node on the front of the DoublyLinkedList.
+     * @param {any} item
+     */
+    push(item) {
+        // Create new node
+        let newNode = new DoublyLinkedNode(item);
+
+        // If list is NOT empty, change 'next' of new node and 'prev' of head node
+        if (this.head !== null) {
+            newNode.next = this.head; // Assign new node 'next' to previous head node
+            this.head.prev = newNode; // Assign prev head node 'prev' to new node
+        }
+
+        // Assign new node to head
+        this.head = newNode;
+    }
+
+    /**
+     * Creates new node with item parameter and adds to end of DoublyLinkedList.
+     * @param {any} item
+     */
+    append(item) {
+        const newNode = new DoublyLinkedNode(item);
+
+        // If list is empty, assign new node to head
+        if (this.head === null) {
+            this.head = newNode;
+        } else {
+            const lastNode = this.getLast();
+            lastNode.next = newNode;
+            newNode.prev = lastNode;
+        }
+    }
+
+    /**
+     * Creates new node with item parameter and inserts after prevNode parameter.
+     * @param {DoublyLinkedNode} prevNode
+     * @param {any} item
+     */
+    insertAfter(prevNode, item) {
+        // Check if prevNode is null
+        if (prevNode === null) {
+            console.error("The previous node must NOT be null");
+            return;
+        }
+
+        // Create new node
+        let newNode = new DoublyLinkedNode(item);
+
+        // Assign prevNode 'next' node's 'prev' property to new node
+        if (prevNode.next !== null)
+            prevNode.next.prev = newNode;
+
+        // Assign new node 'next' and 'prev' properties
+        newNode.next = prevNode.next;
+        newNode.prev = prevNode;
+
+        // Assign prevNode 'next' property to new node
+        prevNode.next = newNode;
+    }
+
+    /**
+     * Creates new node with item parameter and inserts before nextNode parameter.
+     * @param {DoublyLinkedNode} nextNode
+     * @param {any} item
+     */
+    insertBefore(nextNode, item) {
+        // Check if nextNode is null
+        if (nextNode === null) {
+            console.error("The next node must NOT be null");
+            return;
+        }
+
+        // Create new node
+        let newNode = new DoublyLinkedNode(item);
+
+        // Assign nextNode 'prev' node's 'next' property to new node
+        if (nextNode.prev !== null)
+            nextNode.prev.next = newNode;
+
+        // Assign new node 'next' and 'prev' properties
+        newNode.prev = nextNode.prev;
+        newNode.next = nextNode;
+
+        // Assign nextNode 'prev' property to new node
+        nextNode.prev = newNode;
+    }
+
+    /** Returns last node in DoublyLinkedList instance. */
+    getLast() {
+        let tempNode = this.head;
+        if (tempNode !== null) {
+            while (tempNode.next !== null) {
+                tempNode = tempNode.next;
+            }
+        }
+        return tempNode;
+    }
+
+    /** Print each node in DoubleLinkedList instance to console. */
+    print() {
+        let currNode = this.head;
+        while (currNode !== null) {
+            console.log(currNode.data);
+            currNode = currNode.next;
+        }
+    }
 }

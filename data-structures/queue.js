@@ -145,7 +145,7 @@ export class QueueWithArray {
     }
 
     /** Get the front item from the queue. */
-    front() {
+    peekFront() {
         if (this.isEmpty()) {
             console.log("Queue is Empty");
             return;
@@ -155,7 +155,7 @@ export class QueueWithArray {
     }
 
     /** Get the last item from the queue. */
-    rear() {
+    peekRear() {
         if (this.isEmpty()) {
             console.log("Queue is Empty");
             return;
