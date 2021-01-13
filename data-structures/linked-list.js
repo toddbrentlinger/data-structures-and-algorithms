@@ -529,8 +529,10 @@ export class DoublyLinkedList {
         // Create new node
         let newNode = new DoublyLinkedNode(item);
 
-        // Assign nextNode 'prev' node's 'next' property to new node
-        if (nextNode.prev !== null)
+        // If nextNode is head, assign new node to head
+        if (nextNode.prev === null)
+            this.head = newNode;
+        else // Else assign nextNode 'prev' node's 'next' property to new node
             nextNode.prev.next = newNode;
 
         // Assign new node 'next' and 'prev' properties
@@ -552,6 +554,44 @@ export class DoublyLinkedList {
         return tempNode;
     }
 
+    /**
+     * 
+     * @param {DoublyLinkedNode} node
+     */
+    deleteNode(nodeToDelete) {
+        if (this.head === null || nodeToDelete === null)
+            return;
+
+        // If nodeToDelete is head node, change head node to second node
+        if (this.head === nodeToDelete)
+            this.head = nodeToDelete.next;
+
+        // If nodeToDelete 'next' node is NOT null, assign it's 'prev' property
+        if (nodeToDelete.next !== null)
+            nodeToDelete.next.prev = nodeToDelete.prev;
+
+        // If nodeToDelete 'prev' node is NOT null, assign it's 'next' property
+        if (nodeToDelete.prev !== null)
+            nodeToDelete.prev.next = nodeToDelete.next;
+    }
+
+    /** Reverse order of nodes in DoublyLinkedList instance. */
+    reverse() {
+        let tempNode, currNode = this.head;
+        while (currNode !== null) {
+            tempNode = currNode.next;
+            currNode.next = currNode.prev;
+            currNode.prev = tempNode;
+
+            // If currNode is last node, assign to head
+            if (tempNode === null)
+                this.head = currNode;
+
+            // Increment currNode
+            currNode = tempNode;
+        }
+    }
+
     /** Print each node in DoubleLinkedList instance to console. */
     print() {
         let currNode = this.head;
@@ -559,5 +599,18 @@ export class DoublyLinkedList {
             console.log(currNode.data);
             currNode = currNode.next;
         }
+    }
+
+    size() {
+
+    }
+
+    sizeRecursive(node = this.head) {
+
+    }
+
+    /** Clears DoublyLinkedList instance. */
+    clear() {
+        this.head = null;
     }
 }

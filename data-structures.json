@@ -92,6 +92,46 @@
     ]
   },
   {
+    "data-structure": "Doubly Linked List",
+    "global-variable": "doublyLinkedList",
+    "methods": [
+      {
+        "name": "push(item)",
+        "description": "Inserts new node on the front of the DoublyLinkedList."
+      },
+      {
+        "name": "append(item)",
+        "description": "Creates new node with item parameter and adds to end of DoublyLinkedList."
+      },
+      {
+        "name": "insertAfter(prevNode, item)",
+        "description": "Creates new node with item parameter and inserts after prevNode parameter."
+      },
+      {
+        "name": "insertBefore(nextNode, item)",
+        "description": "Creates new node with item parameter and inserts before nextNode parameter."
+      },
+      {
+        "name": "getLast()",
+        "description": "Returns last node in DoublyLinkedList instance."
+      },
+      {
+        "name": "print()",
+        "description": "Print each node in DoubleLinkedList instance to console."
+      },
+      {
+        "name": "",
+        "description": ""
+      }
+    ],
+    "staticMethods": [
+      {
+        "name": "",
+        "description": ""
+      }
+    ]
+  },
+  {
     "data-structure": "Stack With Linked List",
     "global-variable": "stackWithLinkedList",
     "methods": [
