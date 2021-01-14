@@ -577,19 +577,23 @@ export class DoublyLinkedList {
 
     /** Reverse order of nodes in DoublyLinkedList instance. */
     reverse() {
-        let tempNode, currNode = this.head;
+        let prevNode = null;
+        let currNode = this.head;
         while (currNode !== null) {
-            tempNode = currNode.next;
-            currNode.next = currNode.prev;
-            currNode.prev = tempNode;
+            // Assign prevNode
+            prevNode = currNode.prev;
 
-            // If currNode is last node, assign to head
-            if (tempNode === null)
-                this.head = currNode;
+            // Switch 'prev' and 'next' properties of currNode
+            currNode.prev = currNode.next;
+            currNode.next = prevNode;
 
-            // Increment currNode
-            currNode = tempNode;
+            // Increment currNode to next node in list, which is now assigned to 'prev' property
+            currNode = currNode.prev;
         }
+
+        // Assign new head
+        if (prevNode !== null)
+            this.head = prevNode.prev;
     }
 
     /** Print each node in DoubleLinkedList instance to console. */

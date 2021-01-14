@@ -35,6 +35,7 @@ window.QueueWithArray = QueueWithArray;
 
 // Binary Tree
 window.binaryTree = new BinaryTree();
+window.BinaryTree = BinaryTree;
 window.TreeNode = TreeNode;
 
 init();

@@ -392,6 +392,32 @@
         "description": ""
       }
     ]
+  },
+  {
+    "data-structure": "Binary Tree",
+    "global-variable": "binaryTree",
+    "methods": [
+      {
+        "name": "getMaxDepth",
+        "description": "Returns max depth of binary tree."
+      },
+      {
+        "name": "",
+        "description": ""
+      }
+    ],
+    "staticMethods": [
+      {
+        "name": "",
+        "description": ""
+      }
+    ],
+    "methodsThatUseDataStructure": [
+      {
+        "name": "",
+        "description": ""
+      }
+    ]
   }
 ]
 
