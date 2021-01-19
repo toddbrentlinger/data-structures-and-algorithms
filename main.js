@@ -1,4 +1,5 @@
-﻿import { SinglyLinkedList, DoublyLinkedList } from './data-structures/linked-list.js';
+﻿import { createRandomArray, linearSearchArray, improvedLinearSearchArray, binarySearchArray } from './data-structures/array.js';
+import { SinglyLinkedList, DoublyLinkedList } from './data-structures/linked-list.js';
 import {
     StackWithLinkedList, StackWithArray,
     infixToPostfix, infixToPostfixUnitTest, evaluatePostfix, areBracketsBalanced, printNGE,
@@ -9,6 +10,12 @@ import { QueueWithLinkedList, QueueWithArray } from './data-structures/queue.js'
 import { BinaryTree, TreeNode } from './data-structures/binary-tree.js';
 
 import { createDataStructureElement } from './other-scripts/data-structure-element.js';
+
+// Array
+window.createRandomArray = createRandomArray;
+window.linearSearchArray = linearSearchArray;
+window.improvedLinearSearchArray = improvedLinearSearchArray;
+window.binarySearchArray = binarySearchArray;
 
 // Linked List
 window.singlyLinkedList = new SinglyLinkedList();
