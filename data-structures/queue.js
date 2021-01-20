@@ -40,7 +40,7 @@ export class QueueWithLinkedList {
     }
 
     /** Removes an item from the queue. The items are popped in the same order they are pushed.
-     * If the queue is empty, then it is said to be an Underflow conidition. */
+     * If the queue is empty, then it is said to be an Underflow condition. */
     dequeue() {
         if (this.isEmpty()) {
             console.log("Queue is Empty");
@@ -79,6 +79,17 @@ export class QueueWithLinkedList {
         }
 
         return this.rear.data;
+    }
+
+    /** Return number of nodes in queue instance. */
+    count() {
+        let count = 0;
+        let currNode = this.front;
+        while (currNode !== null) {
+            count++;
+            currNode = currNode.next;
+        }
+        return count;
     }
 
     /** Returns if queue is empty. */
@@ -131,7 +142,7 @@ export class QueueWithArray {
     }
 
     /** Removes an item from the queue. The items are popped in the same order they are pushed.
-     * If the queue is empty, then it is said to be an Underflow conidition. */
+     * If the queue is empty, then it is said to be an Underflow condition. */
     dequeue() {
         if (this.isEmpty()) {
             console.log("Queue is Empty");

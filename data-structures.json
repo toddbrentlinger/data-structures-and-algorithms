@@ -1,5 +1,37 @@
 ﻿[
   {
+    "data-structure": "Array",
+    "global-variable": "customArray",
+    "methods": [
+      {
+        "name": "binarySearch(value)",
+        "description": "Binary search sorted array and returns index of match. Returns -1 if no match."
+      },
+      {
+        "name": "linearSearch(value)",
+        "description": "Linear search an array for value and returns index of match. Returns -1 if no match."
+      },
+      {
+        "name": "improvedLinearSearch(value)",
+        "description": "Improved linear search an array for value and returns index of match. Returns -1 if no match."
+      },
+      {
+        "name": "",
+        "description": ""
+      }
+    ],
+    "staticMethods": [
+      {
+        "name": "createRandomArray(length, lowLimit = 0, highLimit = 10, isSorted = false)",
+        "description": "Creates array of specified length with random values in specified range that can be sorted in ascending order."
+      },
+      {
+        "name": "",
+        "description": ""
+      }
+    ]
+  },
+  {
     "data-structure": "Singly Linked List",
     "global-variable": "singlyLinkedList",
     "methods": [
@@ -303,11 +335,11 @@
     "methods": [
       {
         "name": "enqueue(item)",
-        "description": "Adds an item to the queue. If the queue is full, then it is said to be an Overflow condition."
+        "description": "Adds an item to the queue. "
       },
       {
         "name": "dequeue()",
-        "description": "Removes an item from the queue. The items are popped in the same order they are pushed. If the queue is empty, then it is said to be an Underflow conidition."
+        "description": "Removes an item from the queue. The items are popped in the same order they are pushed. If the queue is empty, then it is said to be an Underflow condition."
       },
       {
         "name": "peekFront()",
@@ -316,6 +348,10 @@
       {
         "name": "peekRear()",
         "description": "Get the last item from the queue."
+      },
+      {
+        "name": "count()",
+        "description": "Return number of nodes in queue instance."
       },
       {
         "name": "isEmpty()",
@@ -353,7 +389,7 @@
       },
       {
         "name": "dequeue()",
-        "description": "Removes an item from the queue. The items are popped in the same order they are pushed. If the queue is empty, then it is said to be an Underflow conidition."
+        "description": "Removes an item from the queue. The items are popped in the same order they are pushed. If the queue is empty, then it is said to be an Underflow condition."
       },
       {
         "name": "peekFront()",
@@ -397,6 +433,14 @@
     "data-structure": "Binary Tree",
     "global-variable": "binaryTree",
     "methods": [
+      {
+        "name": "inorderTraversal(node = this.root)",
+        "description": "Inorder traversal of binary tree instance."
+      },
+      {
+        "name": "insert(item)",
+        "description": "Insert item in binary tree."
+      },
       {
         "name": "getMaxDepth",
         "description": "Returns max depth of binary tree."

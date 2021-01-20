@@ -1,4 +1,4 @@
-﻿import { createRandomArray, linearSearchArray, improvedLinearSearchArray, binarySearchArray } from './data-structures/array.js';
+﻿import { CustomArray } from './data-structures/array.js';
 import { SinglyLinkedList, DoublyLinkedList } from './data-structures/linked-list.js';
 import {
     StackWithLinkedList, StackWithArray,
@@ -12,10 +12,8 @@ import { BinaryTree, TreeNode } from './data-structures/binary-tree.js';
 import { createDataStructureElement } from './other-scripts/data-structure-element.js';
 
 // Array
-window.createRandomArray = createRandomArray;
-window.linearSearchArray = linearSearchArray;
-window.improvedLinearSearchArray = improvedLinearSearchArray;
-window.binarySearchArray = binarySearchArray;
+window.customArray = new CustomArray();
+window.CustomArray = CustomArray;
 
 // Linked List
 window.singlyLinkedList = new SinglyLinkedList();
