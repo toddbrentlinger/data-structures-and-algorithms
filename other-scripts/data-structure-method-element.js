@@ -3,7 +3,7 @@
 export function createDataStructureMethodElement(methodJSON, globalVar) {
     if (!methodJSON) return;
 
-    let rootElement, parentElement, childElement;
+    let rootElement, childElement;
 
     // Data structure method element
     rootElement = document.createElement('li');
