@@ -1,5 +1,7 @@
 ﻿"use strict";
 
+import { createAccordionButton } from './accordion-button.js';
+
 export function createDataStructureMethodElement(methodJSON, globalVar) {
     if (!methodJSON) return;
 
@@ -22,25 +24,7 @@ export function createDataStructureMethodElement(methodJSON, globalVar) {
 
     // Code
     // Code - Accordion Button
-    childElement = document.createElement('button');
-    childElement.classList.add('accordion');
-    childElement.innerHTML = "Show Code";
-    childElement.addEventListener('click', function () {
-        /* Toggle between adding and removing the 'active' class,
-         to highlight the button that controls the panel */
-        this.classList.toggle('active');
-
-        // Toggle between hiding and showing the active panel
-        const panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
-            this.innerHTML = "Show Code";
-        } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-            this.innerHTML = "Hide Code";
-        }
-    });
-    rootElement.appendChild(childElement);
+    rootElement.appendChild(createAccordionButton("Show Code", "Hide Code"));
 
     // Code - Panel
     childElement = rootElement.appendChild(document.createElement('div'));

@@ -1,11 +1,12 @@
 ﻿"use strict";
 
 import { createDataStructureMethodElement } from './data-structure-method-element.js';
+import { createAccordionButton } from './accordion-button.js';
 
 export function createDataStructureElement(dataStructureJSON) {
     if (!dataStructureJSON) return;
 
-    let rootElement, parentElement, childElement;
+    let rootElement, childElement;
 
     // Data structure element
     rootElement = document.createElement('section');
