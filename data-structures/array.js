@@ -2,6 +2,25 @@
 
 export class CustomArray extends Array {
     /**
+     * Exponential search algorithm to return index of match. Returns -1 if no match.
+     * @param {any} value
+     */
+    exponentialSearch(value) {
+        // Check if element at first index
+        if (this[0] === value)
+            return 0;
+
+        const arrLength = this.length;
+        // Find index by repeated doubling until element value is greater than value to search
+        let i = 1;
+        while (i < arrLength && this[i] <= value)
+            i *= 2;
+
+        // Recursive binary search for index range (i/2 - i)
+        return this.binarySearchRecursive(value, i / 2, Math.min(i, arrLength - 1));
+    }
+
+    /**
      * Interpolation search uniformly distributed sorted array and returns index of match. Returns -1 if no match.
      * @param {any} value
      */
@@ -20,6 +39,7 @@ export class CustomArray extends Array {
 
             // Probe position formula
             pos = lo + (value - this[lo]) * (hi - lo) / (this[hi] - this[lo]);
+            pos = Math.round(pos);
 
             // Check match
             if (this[pos] === value)
@@ -54,6 +74,30 @@ export class CustomArray extends Array {
             }
         }
         return -1;
+    }
+
+    /**
+     * Recursive binary search sorted array and returns index of match. Returns -1 if no match.
+     * @param {any} value
+     * @param {Number} left
+     * @param {Number} right
+     */
+    binarySearchRecursive(value, left, right) {
+        if (left === undefined)
+            left = 0;
+        if (right === undefined)
+            right = this.length - 1;
+
+        if (left > right) return -1;
+
+        const mid = left + Math.floor((right - left) / 2);
+
+        if (this[mid] < value)
+            return this.binarySearchRecursive(value, mid + 1, right);
+        else if (this[mid] > value)
+            return this.binarySearchRecursive(value, left, mid - 1);
+        else
+            return mid;
     }
 
     /**

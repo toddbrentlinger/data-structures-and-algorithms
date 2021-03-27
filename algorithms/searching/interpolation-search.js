@@ -8,6 +8,7 @@
  * Interpolation search uniformly distributed sorted array and returns index of match. Returns -1 if no match.
  * @param {any[]} arr
  * @param {any} value
+ * @returns {Number}
  */
 export function interpolationSearch(arr, value) {
     let lo = 0;
@@ -24,6 +25,7 @@ export function interpolationSearch(arr, value) {
 
         // Probe position formula
         pos = lo + (value - arr[lo]) * (hi - lo) / (arr[hi] - arr[lo]);
+        pos = Math.round(pos);
 
         // Check match
         if (arr[pos] === value)

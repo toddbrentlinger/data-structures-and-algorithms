@@ -317,6 +317,10 @@ export class SinglyLinkedList {
         return prevNode;
     }
 
+    // ------------------------------------
+    // ---------- Static Methods ----------
+    // ------------------------------------
+
     /**
      * Merges two sorted SinglyLinkedList instances to one sorted list.
      * @param {SinglyLinkedList} firstHeadNode
@@ -357,6 +361,150 @@ export class SinglyLinkedList {
         return dummyNode.next;
     }
 
+    // ----------------------------
+    // ---------- Search ----------
+    // ----------------------------
+
+    /**
+     * 
+     * @param {Node} sublistHead
+     * @param {Node} fullListHead
+     * @returns {Number}
+     */
+    static sublistSearch(sublistHead, fullListHead) {
+        // If both head nodes are null, return true
+        if (sublistHead === null && fullListHead === null)
+            return true;
+
+        // If reach this point, at least one head node is NOT null
+        // If one head node is null, return false
+        if (sublistHead === null || fullListHead === null)
+            return false;
+
+        // If reach this point, both head nodes are NOT null
+        let sub = sublistHead;
+        let full = fullListHead;
+
+        while (full !== null) {
+            // If both node data values are equal
+            if (sub.data === full.data) {
+                // If sub.next is null, sublist is in full list, return true
+                if (sub.next === null)
+                    return true;
+                // Increment sub to next node
+                sub = sub.next;
+            } else // Else node data values are NOT equal, reset sub to sublistHead
+                sub = sublistHead;
+
+            // Increment full to next node
+            full = full.next;
+        }
+        // If reach here, no match, return false
+        return false;
+    }
+
+    static sublistSearchUnitTests() {
+        const fullListStr = "0->1->2->3->4->5";
+        const fullList = new SinglyLinkedList();
+        fullList.append(0);
+        fullList.append(1);
+        fullList.append(2);
+        fullList.append(3);
+        fullList.append(4);
+        fullList.append(5);
+        console.log("Full List: " + fullListStr);
+
+        // Substring in Middle, return true
+        const subListStr = "2->3->4";
+        const subList = new SinglyLinkedList();
+        subList.append(2);
+        subList.append(3);
+        subList.append(4);
+        console.log(`Sub: ${subListStr}\nTrue: ${this.sublistSearch(subList.head, fullList.head)}`);
+
+        // Substring at beginning, return true
+        const subList1Str = "0->1->2";
+        const subList1 = new SinglyLinkedList();
+        subList1.append(0);
+        subList1.append(1);
+        subList1.append(2);
+        console.log(`Sub: ${subList1Str}\nTrue: ${this.sublistSearch(subList1.head, fullList.head)}`);
+
+        // Substring at end, return true
+        const subList2Str = "3->4->5";
+        const subList2 = new SinglyLinkedList();
+        subList2.append(3);
+        subList2.append(4);
+        subList2.append(5);
+        console.log(`Sub: ${subList2Str}\nTrue: ${this.sublistSearch(subList2.head, fullList.head)}`);
+
+        // Substring not in full string, return false
+        const subList3Str = "6->7->8";
+        const subList3 = new SinglyLinkedList();
+        subList3.append(6);
+        subList3.append(7);
+        subList3.append(8);
+        console.log(`Sub: ${subList3Str}\nFalse: ${this.sublistSearch(subList3.head, fullList.head)}`);
+
+        // Substring longer than full string AND full string at beginning of substring, return false
+        const subList4Str = "0->1->2->3->4->5->6";
+        const subList4 = new SinglyLinkedList();
+        subList4.append(0);
+        subList4.append(1);
+        subList4.append(2);
+        subList4.append(3);
+        subList4.append(4);
+        subList4.append(5);
+        subList4.append(6);
+        console.log(`Sub: ${subList4Str}\nFalse: ${this.sublistSearch(subList4.head, fullList.head)}`);
+
+        // Substring longer than full string AND full string at end of substring, return false
+        const subList5Str = "-1->0->1->2->3->4->5";
+        const subList5 = new SinglyLinkedList();
+        subList5.append(-1);
+        subList5.append(0);
+        subList5.append(1);
+        subList5.append(2);
+        subList5.append(3);
+        subList5.append(4);
+        subList5.append(5);
+        console.log(`Sub: ${subList5Str}\nFalse: ${this.sublistSearch(subList5.head, fullList.head)}`);
+
+        // Substring longer than full string AND full string NOT in substring, return false
+        const subList6Str = "10->11->12->13->14->15->16";
+        const subList6 = new SinglyLinkedList();
+        subList6.append(10);
+        subList6.append(11);
+        subList6.append(12);
+        subList6.append(13);
+        subList6.append(14);
+        subList6.append(15);
+        subList6.append(16);
+        console.log(`Sub: ${subList6Str}\nFalse: ${this.sublistSearch(subList6.head, fullList.head)}`);
+
+        // Beginning of substring at end of full string, return false
+        const subList7Str = "4->5->6";
+        const subList7 = new SinglyLinkedList();
+        subList7.append(4);
+        subList7.append(5);
+        subList7.append(6);
+        console.log(`Sub: ${subList7Str}\nFalse: ${this.sublistSearch(subList7.head, fullList.head)}`);
+
+        // Strings are equal, return true
+        const subList8 = new SinglyLinkedList();
+        subList8.append(0);
+        subList8.append(1);
+        subList8.append(2);
+        subList8.append(3);
+        subList8.append(4);
+        subList8.append(5);
+        console.log(`Sub: ${fullListStr}\nTrue: ${this.sublistSearch(subList8.head, fullList.head)}`);
+    }
+
+    // --------------------------
+    // ---------- Sort ----------
+    // --------------------------
+
     /**
      * Merge sort linked list.
      * @param {Node} headNode
@@ -383,6 +531,10 @@ export class SinglyLinkedList {
         const sortedList = SinglyLinkedList.mergeTwoSortedLists(left, right);
         return sortedList;
     }
+
+    // -----------------------------
+    // ---------- Utility ----------
+    // -----------------------------
 
     /**
      * Utility function to get middle of the linked list.
