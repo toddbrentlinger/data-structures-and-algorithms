@@ -366,10 +366,10 @@ export class SinglyLinkedList {
     // ----------------------------
 
     /**
-     * 
+     * Checks whether the first singly linked list is present in second singly linked list.
      * @param {Node} sublistHead
      * @param {Node} fullListHead
-     * @returns {Number}
+     * @returns {Boolean}
      */
     static sublistSearch(sublistHead, fullListHead) {
         // If both head nodes are null, return true

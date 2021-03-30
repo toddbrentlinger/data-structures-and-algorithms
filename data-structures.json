@@ -4,6 +4,10 @@
     "global-variable": "customArray",
     "methods": [
       {
+        "name": "fibonacciSearch(value)",
+        "description": "Fibonacci search algorithm to return index of match. Returns -1 if no match."
+      },
+      {
         "name": "exponentialSearch(value)",
         "description": "Exponential search algorithm to return index of match. Returns -1 if no match."
       },
@@ -121,6 +125,10 @@
       }
     ],
     "staticMethods": [
+      {
+        "name": "sublistSearch(sublistHead, fullListHead)",
+        "description": "Checks whether the first singly linked list is present in second singly linked list."
+      },
       {
         "name": "mergeTwoSortedLists(firstHeadNode, secondHeadNode)",
         "description": "Merges two sorted SinglyLinkedList instances to one sorted list."

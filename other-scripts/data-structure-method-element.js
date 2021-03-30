@@ -24,10 +24,10 @@ export function createDataStructureMethodElement(methodJSON, globalVar) {
 
     // Code
     // Code - Accordion Button
-    rootElement.appendChild(createAccordionButton("Show Code", "Hide Code"));
+    childElement = rootElement.appendChild(createAccordionButton("Show Code", "Hide Code"));
 
     // Code - Panel
-    childElement = rootElement.appendChild(document.createElement('div'));
+    childElement = childElement.appendChild(document.createElement('div'));
     childElement.classList.add('panel');
     childElement = childElement.appendChild(document.createElement('code'));
     if (globalVar)
