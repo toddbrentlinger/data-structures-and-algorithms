@@ -19,8 +19,20 @@ export function createDataStructureElement(dataStructureJSON) {
 
     // Global variable name
     childElement = document.createElement('p');
-    childElement.innerHTML = `Global Instance Variable: ${dataStructureJSON['global-variable']}`;
+    childElement.innerHTML = `Class Name: ${dataStructureJSON['global-variable']}`;
     rootElement.appendChild(childElement);
+
+    // Constructor - Header
+    childElement = document.createElement('h3');
+    childElement.innerHTML = "Constructor";
+    rootElement.appendChild(childElement);
+    // Constructor Code - Accordion Button
+    childElement = rootElement.appendChild(createAccordionButton("Show Code", "Hide Code"));
+    // Constructor Code - Panel
+    childElement = childElement.appendChild(document.createElement('div'));
+    childElement.classList.add('panel');
+    childElement = childElement.appendChild(document.createElement('code'));
+    childElement.innerHTML = window[dataStructureJSON['global-variable']].prototype.constructor;
 
     // Methods - Header
     childElement = document.createElement('h3');
@@ -36,34 +48,43 @@ export function createDataStructureElement(dataStructureJSON) {
         childElement.appendChild(
             createDataStructureMethodElement(
                 methodJSON,
-                window[dataStructureJSON['global-variable']]
+                window[dataStructureJSON['global-variable']].prototype
             )
         );
     });
     rootElement.appendChild(childElement);
 
-    // Static Methods - Header
-    childElement = document.createElement('h3');
-    childElement.innerHTML = "Static Methods";
-    rootElement.appendChild(childElement);
     // Static Methods
-    childElement = document.createElement('ul');
-    childElement.classList.add('data-structure-method-container');
-    dataStructureJSON.staticMethods.forEach(staticMethodJSON => {
-        if (!staticMethodJSON.name)
-            return;
+    if (dataStructureJSON.staticMethods
+        && !(dataStructureJSON.staticMethods.length === 1
+            && !dataStructureJSON.staticMethods[0].name)
+    ) {
+        // Static Methods - Header
+        childElement = document.createElement('h3');
+        childElement.innerHTML = "Static Methods";
+        rootElement.appendChild(childElement);
+        // Static Methods
+        childElement = document.createElement('ul');
+        childElement.classList.add('data-structure-method-container');
+        dataStructureJSON.staticMethods.forEach(staticMethodJSON => {
+            if (!staticMethodJSON.name)
+                return;
 
-        childElement.appendChild(
-            createDataStructureMethodElement(
-                staticMethodJSON,
-                window[dataStructureJSON['global-variable']].constructor
-            )
-        );
-    });
-    rootElement.appendChild(childElement);
+            childElement.appendChild(
+                createDataStructureMethodElement(
+                    staticMethodJSON,
+                    window[dataStructureJSON['global-variable']]
+                )
+            );
+        });
+        rootElement.appendChild(childElement);
+    }
 
     // Methods That Use Data Structure
-    if (dataStructureJSON.hasOwnProperty('methodsThatUseDataStructure')) {
+    if (dataStructureJSON.methodsThatUseDataStructure
+        && !(dataStructureJSON.methodsThatUseDataStructure.length === 1
+            && !dataStructureJSON.methodsThatUseDataStructure[0].name)
+    ) {
         // Header
         childElement = document.createElement('h3');
         childElement.innerHTML = "Methods That Use Data Structure";

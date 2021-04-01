@@ -13,13 +13,33 @@ export class Node {
 }
 
 export class SinglyLinkedList {
-    /**
-     * @constructor
-     * @param {Node} firstNode
-     */
-    constructor(firstNode = null) {
-        this.head = firstNode;
+    /** @constructor */
+    constructor() {
+        // Initialize head to null
+        this.head = null;
+
+        // If no arguments, return
+        if (!arguments.length) return;
+
+        let newNode;
+        let currNode = this.head;
+        Array.from(arguments).forEach(
+            arg => {
+                newNode = new Node(arg);
+                // If SinglyLinkedList is empty, assign new node to head
+                if (!this.head)
+                    this.head = newNode;
+                else { // Else add to last node 'next' property
+                    currNode.next = newNode;
+                }
+                // Assign newNode to currNode
+                currNode = newNode;
+            }
+        );
     }
+    //constructor(firstNode = null) {
+    //    this.head = firstNode;
+    //}
 
     /** Returns number of nodes in SinglyLinkedList instance. */
     size() {
@@ -600,9 +620,34 @@ export class DoublyLinkedNode extends Node {
 /** @todo Can extend SinglyLinkedList to use some of the same methods
  *        like print(), getLast(), etc. */
 export class DoublyLinkedList {
-    constructor(firstNode = null) {
-        this.head = firstNode;
+    /** @constructor */
+    constructor() {
+        // Initialize head to null
+        this.head = null;
+
+        // If no arguments, return
+        if (!arguments.length) return;
+
+        let newNode;
+        let currNode = this.head;
+        Array.from(arguments).forEach(
+            arg => {
+                newNode = new DoublyLinkedNode(arg);
+                // If SinglyLinkedList is empty, assign new node to head
+                if (!this.head)
+                    this.head = newNode;
+                else { // Else add to last node 'next' property
+                    currNode.next = newNode;
+                    newNode.prev = currNode;
+                }
+                // Assign newNode to currNode
+                currNode = newNode;
+            }
+        );
     }
+    //constructor(firstNode = null) {
+    //    this.head = firstNode;
+    //}
 
     /**
      * Inserts new node on the front of the DoublyLinkedList.

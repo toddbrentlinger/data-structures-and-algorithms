@@ -1,7 +1,7 @@
 ﻿[
   {
     "data-structure": "Array",
-    "global-variable": "customArray",
+    "global-variable": "CustomArray",
     "methods": [
       {
         "name": "fibonacciSearch(value)",
@@ -53,7 +53,7 @@
   },
   {
     "data-structure": "Singly Linked List",
-    "global-variable": "singlyLinkedList",
+    "global-variable": "SinglyLinkedList",
     "methods": [
       {
         "name": "size()",
@@ -149,7 +149,7 @@
   },
   {
     "data-structure": "Doubly Linked List",
-    "global-variable": "doublyLinkedList",
+    "global-variable": "DoublyLinkedList",
     "methods": [
       {
         "name": "push(item)",
@@ -189,7 +189,7 @@
   },
   {
     "data-structure": "Stack With Linked List",
-    "global-variable": "stackWithLinkedList",
+    "global-variable": "StackWithLinkedList",
     "methods": [
       {
         "name": "push(item)",
@@ -259,7 +259,7 @@
   },
   {
     "data-structure": "Stack With Array",
-    "global-variable": "stackWithArray",
+    "global-variable": "StackWithArray",
     "methods": [
       {
         "name": "push(item)",
@@ -317,7 +317,7 @@
   },
   {
     "data-structure": "Two Stacks In Array",
-    "global-variable": "twoStacksInArray",
+    "global-variable": "TwoStacksInArray",
     "methods": [
       {
         "name": "push1(item)",
@@ -355,7 +355,7 @@
   },
   {
     "data-structure": "Queue With Linked List",
-    "global-variable": "queueWithLinkedList",
+    "global-variable": "QueueWithLinkedList",
     "methods": [
       {
         "name": "enqueue(item)",
@@ -405,7 +405,7 @@
   },
   {
     "data-structure": "Queue With Array",
-    "global-variable": "queueWithArray",
+    "global-variable": "QueueWithArray",
     "methods": [
       {
         "name": "enqueue(item)",
@@ -455,7 +455,7 @@
   },
   {
     "data-structure": "Binary Tree",
-    "global-variable": "binaryTree",
+    "global-variable": "BinaryTree",
     "methods": [
       {
         "name": "inorderTraversal(node = this.root)",
