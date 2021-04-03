@@ -11,9 +11,12 @@ import { BinaryTree, TreeNode } from './data-structures/binary-tree.js';
 
 import { createDataStructureElement } from './other-scripts/data-structure-element.js';
 
+import { compareArraySearchAlgorithms } from './algorithms/searching/compare-search-algorithms.js';
+
 // Array
 //window.customArray = new CustomArray();
 window.CustomArray = CustomArray;
+window.compareArraySearchAlgorithms = compareArraySearchAlgorithms;
 
 // Linked List
 //window.singlyLinkedList = new SinglyLinkedList();
