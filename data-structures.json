@@ -486,6 +486,40 @@
         "description": ""
       }
     ]
+  },
+  {
+    "data-structure": "Binary Search Tree",
+    "global-variable": "BinarySearchTree",
+    "methods": [
+      {
+        "name": "inorderTraversal(node = this.root)",
+        "description": "Inorder traversal of binary search tree instance."
+      },
+      {
+        "name": "insert(item)",
+        "description": "Insert item in binary search tree."
+      },
+      {
+        "name": "search(key, node = this.root)",
+        "description": "Recursively searches binary search tree for matching key. If found, returns node, else return null."
+      },
+      {
+        "name": "",
+        "description": ""
+      }
+    ],
+    "staticMethods": [
+      {
+        "name": "",
+        "description": ""
+      }
+    ],
+    "methodsThatUseDataStructure": [
+      {
+        "name": "",
+        "description": ""
+      }
+    ]
   }
 ]
 
