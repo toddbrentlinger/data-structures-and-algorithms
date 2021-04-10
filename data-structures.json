@@ -500,8 +500,20 @@
         "description": "Insert item in binary search tree."
       },
       {
+        "name": "insertRecursive(item, node = this.root)",
+        "description": "Recursive function to insert item in binary search tree."
+      },
+      {
         "name": "search(key, node = this.root)",
         "description": "Recursively searches binary search tree for matching key. If found, returns node, else return null."
+      },
+      {
+        "name": "deleteKey(key)",
+        "description": "Delete node with matching key from binary search tree using recursive method."
+      },
+      {
+        "name": "deleteKeyRecursive(key, node = this.root)",
+        "description": "Recursive method to delete node with key from binary search tree."
       },
       {
         "name": "",

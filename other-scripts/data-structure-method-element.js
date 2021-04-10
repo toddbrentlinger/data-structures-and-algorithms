@@ -12,7 +12,7 @@ export function createDataStructureMethodElement(methodJSON, globalVar) {
     rootElement.classList.add('data-structure-method');
 
     // Name
-    childElement = document.createElement('h3');
+    childElement = document.createElement('h4');
     childElement.innerHTML = methodJSON.name;
     rootElement.appendChild(childElement);
 
