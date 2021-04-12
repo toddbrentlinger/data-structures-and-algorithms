@@ -140,7 +140,7 @@ export class BinarySearchTree {
      * @param {TreeNode} node
      * @returns {TreeNode}
      */
-    deleteKeyRecursive(key, node = this.root) {
+    deleteRecursive(key, node = this.root) {
         // Base Case: If the tree with root at node is empty, return node
         if (node === null)
             return node;
@@ -162,17 +162,17 @@ export class BinarySearchTree {
             // If reach this point, node has two children
             // Get the inorder successor (smallest in the right subtree)
             let minNode = node.right;
-            let minValue = minNode.data; // in order successor value
-            while (minNode !== null) {
-                minValue = minNode.data;
+            //let minValue = minNode.data; // in order successor value
+            while (minNode.left !== null) {
+                //minValue = minNode.data;
                 minNode = minNode.left;
             }
 
             // Assign inorder successor to node
-            node.data = minValue;
+            node.data = minNode.data;
 
             // Delete the inorder successor
-            node.right = this.deleteRecursive(minValue, node.right);
+            node.right = this.deleteRecursive(minNode.data, node.right);
         }
 
         return node;
@@ -250,5 +250,156 @@ export class BinarySearchTree {
             str += Object.values(dataPoint).toString() + "\n";
         });
         return str;
+    }
+}
+
+export class TreeNodeWithCounter extends TreeNode {
+    /**
+     * @constructor
+     * @param {any} data
+     */
+    constructor(data) {
+        super(data);
+        this.counter = 1;
+    }
+}
+
+export class BinarySearchTreeAllowDuplicates extends BinarySearchTree {
+    /**
+     * @constructor
+     * @param {TreeNodeWithCounter} node
+     */
+    constructor(node = null) {
+        super(node);
+    }
+
+    // ------------------------------------
+    // ---------- Public Methods ----------
+    // ------------------------------------
+
+    /* Methods inherited from base class BinarySearchTree:
+     * inorderTraversal
+     * search */
+
+    /**
+     * Recursive function to insert item in binary search tree.
+     * @param {any} item
+     * @param {TreeNodeWithCounter} node
+     */
+    insertRecursive(item, node = this.root) {
+        // Base Case: If node is null, create and return new node
+        if (node === null)
+            return new TreeNodeWithCounter(item);
+
+        // Base Case: If node data property is equal to item, increment counter
+        if (item === node.data)
+            node.counter += 1;
+        // Else If item is greater than node data, move to right branch
+        else if (item > node.data)
+            node.right = this.insertRecursive(item, node.right);
+        // Else item is less than node data, move to left branch
+        else
+            node.left = this.insertRecursive(item, node.left);
+
+        return node;
+    }
+
+    /**
+     * Insert item in binary search tree.
+     * @param {any} item
+     */
+    insert(item) {
+        let currNode = this.root;
+
+        // Check if empty BinarySearchTree
+        if (this.root === null) {
+            this.root = new TreeNodeWithCounter(item);
+            return;
+        }
+
+        while (true) {
+            // If currNode data is equal, increment counter return
+            if (currNode.data === item) {
+                currNode.counter += 1;
+                return;
+            }
+            // Else If item is greater than currNode data, move to right branch
+            else if (currNode.data < item) {
+                if (currNode.right === null) {
+                    currNode.right = new TreeNodeWithCounter(item);
+                    return;
+                }
+                else
+                    currNode = currNode.right;
+            }
+
+            // Else item is less than currNode data, move to left branch
+            else {
+                if (currNode.left === null) {
+                    currNode.left = new TreeNodeWithCounter(item);
+                    return;
+                }
+                else
+                    currNode = currNode.left;
+            }
+        }
+    }
+
+    /**
+     * Delete node with matching key from binary search tree using recursive method.
+     * @param {any} key
+     */
+    deleteKey(key) {
+        this.root = this.deleteRecursive(key);
+    }
+
+    /**
+     * Recursive method to delete node with key from binary search tree.
+     * @param {any} key
+     * @param {TreeNodeWithCounter} node
+     * @returns {TreeNodeWithCounter}
+     */
+    deleteRecursive(key, node = this.root) {
+        // Base Case: If the tree with root at node is empty, return node
+        if (node === null)
+            return node;
+
+        // If key is less than data at node
+        if (key < node.data)
+            node.left = this.deleteRecursive(key, node.left);
+        // Else If key is more than data at node
+        else if (key > node.data)
+            node.right = this.deleteRecursive(key, node.right);
+        // Else key is equal to data at node, delete node
+        else { 
+            // If node counter is greater than 1, decrement counter and return node
+            if (node.counter > 1) {
+                node.counter -= 1;
+                return node;
+            }
+
+            // If node has one or no children
+            if (node.left === null)
+                return node.right;
+            else if (node.right === null)
+                return node.left;
+
+            // If reach this point, node has two children
+            // Get the inorder successor (smallest in the right subtree)
+            let minNode = node.right;
+            //let minValue = minNode.data; // in order successor value
+            while (minNode.left !== null) {
+                //minValue = minNode.data;
+                minNode = minNode.left;
+            }
+
+            // Assign inorder successor to node
+            node.data = minNode.data;
+
+            // Delete the inorder successor
+            node.right = this.deleteRecursive(minNode.data, node.right);
+        }
+
+        return node;
     }
 }

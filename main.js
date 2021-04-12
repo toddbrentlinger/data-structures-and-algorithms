@@ -8,7 +8,7 @@ import {
 } from './data-structures/stack.js';
 import { QueueWithLinkedList, QueueWithArray } from './data-structures/queue.js';
 import { BinaryTree, TreeNode } from './data-structures/binary-tree.js';
-import { BinarySearchTree } from './data-structures/binary-search-tree.js';
+import { BinarySearchTree, BinarySearchTreeAllowDuplicates } from './data-structures/binary-search-tree.js';
 
 import { createDataStructureElement } from './other-scripts/data-structure-element.js';
 
@@ -52,6 +52,7 @@ window.TreeNode = TreeNode;
 
 // Binary Search Tree
 window.BinarySearchTree = BinarySearchTree;
+window.BinarySearchTreeAllowDuplicates = BinarySearchTreeAllowDuplicates;
 
 init();
 
